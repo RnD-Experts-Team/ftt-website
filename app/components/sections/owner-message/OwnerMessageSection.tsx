@@ -1,0 +1,152 @@
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import SectionContainer from "@/app/components/layout/SectionContainer";
+import VideoPlayer from "@/app/components/common/VideoPlayer";
+
+// Animation variants for horizontal slide-in
+const textBlockVariants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
+  },
+};
+
+const videoBlockVariants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+      delay: 0.2,
+    },
+  },
+};
+
+// Decorative blob animations
+const blobVariants = {
+  animate: {
+    scale: [1, 1.2, 1],
+    opacity: [0.3, 0.5, 0.3],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: [0.42, 0, 0.58, 1] as const,
+    },
+  },
+};
+
+export default function OwnerMessageSection() {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  return (
+    <section className="relative w-full border-t border-b border-slate-200 dark:border-slate-800 overflow-hidden">
+      <SectionContainer size="xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left Content: Text Block */}
+          <motion.div
+            className="flex flex-col space-y-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={textBlockVariants}
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 w-fit">
+              <span className="text-primary text-xs font-bold tracking-widest uppercase">
+                Meet Our Founder
+              </span>
+            </div>
+            <h2 className="text-slate-900 dark:text-white text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
+              A Message from Shawn, Owner
+            </h2>
+            <motion.div 
+              className="space-y-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ staggerChildren: 0.2, delayChildren: 0.3 }}
+            >
+              <motion.p 
+                className="text-slate-600 dark:text-white/90 text-base sm:text-lg font-normal leading-relaxed"
+                initial={{ opacity: 0, y: 20, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                style={{ transformPerspective: 1000 }}
+              >
+                At First Team Trucking, we believe drivers deserve more than just a paycheck, they deserve respect, opportunity, and a clear path to grow.
+              </motion.p>
+              <motion.p 
+                className="text-slate-600 dark:text-white/90 text-base sm:text-lg font-normal leading-relaxed"
+                initial={{ opacity: 0, y: 20, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                style={{ transformPerspective: 1000 }}
+              >
+                As an Amazon Freight Partner, we operate with high standards for safety, reliability, and professionalism. But what truly sets us apart is how we support our drivers.
+              </motion.p>
+              <motion.p 
+                className="text-slate-600 dark:text-white/90 text-base sm:text-lg font-normal leading-relaxed"
+                initial={{ opacity: 0, y: 20, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                style={{ transformPerspective: 1000 }}
+              >
+                Whether you're new to Amazon lanes or an experienced CDL Class A driver, our team is committed to giving you the tools, training, and support you need to succeed. If you're willing to show up, stay safe, and take pride in your work, there's a place for you here.
+              </motion.p>
+            </motion.div>
+            <div className="pt-4">
+              <button
+                onClick={() => setIsVideoPlaying(!isVideoPlaying)}
+                className="group flex items-center justify-center gap-3 min-w-50 h-14 rounded-lg bg-primary text-white text-lg font-bold transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 p-5"
+              >
+                <span className="material-symbols-outlined">play_circle</span>
+                <span>Watch Shawn&apos;s Message</span>
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Right Content: Video Player */}
+          <motion.div
+            className="relative group"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={videoBlockVariants}
+          >
+            {/* Decorative Background Elements */}
+            <motion.div
+              className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"
+              variants={blobVariants}
+              animate="animate"
+            ></motion.div>
+            <motion.div
+              className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/5 rounded-full blur-3xl"
+              variants={blobVariants}
+              animate="animate"
+              transition={{ delay: 1 }}
+            ></motion.div>
+
+            {/* Video Container */}
+            <VideoPlayer
+              videoSrc="/Shawn.mp4"
+              title="A Message from Shawn, Owner"
+              showControls={true}
+              onPlayStateChange={setIsVideoPlaying}
+            />
+          </motion.div>
+        </div>
+      </SectionContainer>
+    </section>
+  );
+}

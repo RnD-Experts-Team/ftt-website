@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FTT Homepage - Drive With The Best</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Barlow+Condensed:ital,wght@1,700;1,800;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eb1920",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#090C0E",
+                        "charcoal": "#090C0E",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "brand": ["'Barlow Condensed'", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(90deg, #090C0E 30%, rgba(9, 12, 14, 0.4) 100%);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(235, 25, 32, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="fixed top-0 z-50 w-full border-b border-white/5 bg-charcoal/80 backdrop-blur-md px-6 lg:px-20 py-4">
+<div class="mx-auto flex max-w-[1400px] items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center rounded bg-primary p-1">
+<span class="material-symbols-outlined text-white text-2xl">local_shipping</span>
+</div>
+<h2 class="text-xl font-black uppercase tracking-tighter text-white font-brand italic">First Team Trucking</h2>
+</div>
+<nav class="hidden md:flex flex-1 justify-center gap-10">
+<a class="text-sm font-semibold text-white/70 transition-colors hover:text-primary" href="#">Benefits</a>
+<a class="text-sm font-semibold text-white/70 transition-colors hover:text-primary" href="#">Requirements</a>
+<a class="text-sm font-semibold text-white/70 transition-colors hover:text-primary" href="#">About Us</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex min-w-[120px] cursor-pointer items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-primary/90 hover:scale-105">
+<span>Apply Now</span>
+</button>
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<main class="relative flex min-h-screen w-full items-center pt-20">
+<!-- Background Image Container -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 hero-gradient z-10"></div>
+<div class="h-full w-full bg-cover bg-center" data-alt="Modern Amazon branded semi-truck on industrial road at dusk" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAicvgIsSNKrNrYejEr60E7ErkhhC1WgBWnLn97s5meREK8fvqXls-v8coUHvL5t_TjQdsiBKVfJnXd5js7h5MFEiwVKV6jNM1ElHpaelD3UzpIS-15341p8IOjLwc7AM-TGa7bU9Ws4Hs3I1TrjGvP1B_I3HPvANkRQhjtoyrHaUjoxPbaAhvQBmOWYCo_m_H09BaU4jZxKs6fSBYOjt2xnXcGjmeAWNsL8oGYGgmvLvaCncFqKmQLs9UKt7124njkB5Orib7VN0E");'></div>
+</div>
+<!-- Content Container -->
+<div class="container mx-auto px-6 lg:px-20 relative z-20">
+<div class="max-w-[800px]">
+<div class="mb-6 flex items-center gap-2">
+<span class="h-[2px] w-12 bg-primary"></span>
+<span class="text-xs font-bold uppercase tracking-[0.3em] text-primary">Amazon Freight Partner</span>
+</div>
+<h1 class="mb-6 font-brand text-5xl font-black italic leading-[0.95] tracking-tight text-white md:text-7xl lg:text-8xl uppercase text-glow">
+                        Drive with the best:<br/>
+<span class="text-primary">Join First Team Trucking</span>
+</h1>
+<p class="mb-10 max-w-[600px] text-lg leading-relaxed text-slate-300 md:text-xl">
+                        Operate top-tier Amazon-branded equipment. Regional lanes running out of Indianapolis. Competitive pay, consistent home time, and a team that values your drive.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="flex min-w-[200px] cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary px-8 py-5 text-lg font-black uppercase tracking-widest text-white transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(235,25,32,0.4)]">
+                            APPLY NOW
+                            <span class="material-symbols-outlined">trending_flat</span>
+</button>
+<button class="flex min-w-[200px] cursor-pointer items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 px-8 py-5 text-lg font-bold uppercase tracking-widest text-white backdrop-blur-sm transition-all hover:bg-white/10">
+                            LEARN MORE
+                        </button>
+</div>
+<!-- Quick Stats -->
+<div class="mt-16 grid grid-cols-2 gap-8 border-t border-white/10 pt-10 md:grid-cols-4">
+<div class="flex flex-col">
+<span class="text-3xl font-brand font-black italic text-white">$75k+</span>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400">Avg. Earnings</span>
+</div>
+<div class="flex flex-col">
+<span class="text-3xl font-brand font-black italic text-white">Daily</span>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400">Home Time</span>
+</div>
+<div class="flex flex-col">
+<span class="text-3xl font-brand font-black italic text-white">Brand New</span>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400">Fleet Quality</span>
+</div>
+<div class="flex flex-col">
+<span class="text-3xl font-brand font-black italic text-white">Indy</span>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400">Base Hub</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 animate-pulse">
+<span class="text-[10px] font-bold uppercase tracking-[0.4em]">Explore</span>
+<span class="material-symbols-outlined">keyboard_double_arrow_down</span>
+</div>
+</main>
+<!-- Features Grid -->
+<section class="bg-charcoal px-6 py-24 lg:px-20">
+<div class="mx-auto max-w-[1400px]">
+<div class="mb-16 text-center">
+<h2 class="font-brand text-4xl font-black italic uppercase text-white md:text-5xl">Why Drive for FTT?</h2>
+<p class="mx-auto mt-4 max-w-2xl text-slate-400">We provide the best equipment and consistent routes to ensure our drivers succeed on the road and at home.</p>
+</div>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+<!-- Feature Card 1 -->
+<div class="group relative overflow-hidden rounded-xl border border-white/5 bg-white/[0.03] p-8 transition-all hover:border-primary/50 hover:bg-white/[0.05]">
+<div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-3xl">door_front</span>
+</div>
+<h3 class="mb-3 text-xl font-bold text-white uppercase font-brand italic tracking-wide">New Equipment</h3>
+<p class="text-slate-400 leading-relaxed">Drive state-of-the-art Amazon-branded semi-trucks equipped with the latest safety technology and driver comforts.</p>
+</div>
+<!-- Feature Card 2 -->
+<div class="group relative overflow-hidden rounded-xl border border-white/5 bg-white/[0.03] p-8 transition-all hover:border-primary/50 hover:bg-white/[0.05]">
+<div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-3xl">distance</span>
+</div>
+<h3 class="mb-3 text-xl font-bold text-white uppercase font-brand italic tracking-wide">Regional Lanes</h3>
+<p class="text-slate-400 leading-relaxed">Stable, consistent routes originating from Indianapolis. Know your schedule ahead of time with no surprises.</p>
+</div>
+<!-- Feature Card 3 -->
+<div class="group relative overflow-hidden rounded-xl border border-white/5 bg-white/[0.03] p-8 transition-all hover:border-primary/50 hover:bg-white/[0.05]">
+<div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-3xl">home_pin</span>
+</div>
+<h3 class="mb-3 text-xl font-bold text-white uppercase font-brand italic tracking-wide">Home Daily</h3>
+<p class="text-slate-400 leading-relaxed">We prioritize your work-life balance. Our regional structure ensures reliable home time so you can be there for your family.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="border-t border-white/5 bg-charcoal px-6 py-12 lg:px-20">
+<div class="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-8 md:flex-row">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<span class="font-brand text-lg font-black italic uppercase text-white tracking-tighter">First Team Trucking</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-sm text-slate-500 hover:text-white transition-colors" href="#">Benefits</a>
+<a class="text-sm text-slate-500 hover:text-white transition-colors" href="#">Requirements</a>
+<a class="text-sm text-slate-500 hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm text-slate-500 hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+<p class="text-xs text-slate-600 uppercase tracking-widest font-bold">
+                    © 2024 First Team Trucking. All rights reserved.
+                </p>
+</div>
+</footer>
+</div>
+</body></html>
