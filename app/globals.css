@@ -109,3 +109,20 @@ html {
 [id] {
   scroll-margin-top: 5rem; /* 80px navbar height */
 }
+
+/* Gradient Text Utility */
+.text-gradient {
+  background: linear-gradient(135deg, #eb1920 0%, #ff4757 50%, #eb1920 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.dark .text-gradient {
+  background: linear-gradient(135deg, #ff3b47 0%, #ff6b78 50%, #ff3b47 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}

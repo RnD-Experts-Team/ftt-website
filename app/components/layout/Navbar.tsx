@@ -13,43 +13,48 @@ export default function Navbar() {
   // Handle hash scrolling on page load
   useEffect(() => {
     const hash = window.location.hash;
-    if (hash && pathname === '/') {
-      const sectionId = hash.replace('#', '');
+    if (hash && pathname === "/") {
+      const sectionId = hash.replace("#", "");
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
           const navbarHeight = 80;
           const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - navbarHeight;
 
           window.scrollTo({
             top: offsetPosition,
-            behavior: "smooth"
+            behavior: "smooth",
           });
         }
       }, 100);
     }
   }, [pathname]);
 
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+  ) => {
     e.preventDefault();
-    
+
     // If not on home page, navigate to home first
-    if (pathname !== '/') {
+    if (pathname !== "/") {
       router.push(`/#${sectionId}`);
       return;
     }
-    
+
     // Smooth scroll to section
     const element = document.getElementById(sectionId);
     if (element) {
       const navbarHeight = 80; // Approximate navbar height
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - navbarHeight;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   };
@@ -82,7 +87,7 @@ export default function Navbar() {
             className="w-14 sm:w-16 hidden dark:block"
           />
 
-          <h2 className="hidden sm:block text-base lg:text-lg font-black uppercase tracking-tighter text-slate-900 dark:text-white font-brand italic whitespace-nowrap">
+          <h2 className="hidden sm:block text-base lg:text-lg font-black uppercase tracking-tighter font-brand italic whitespace-nowrap bg-gradient-to-r from-primary to-slate-900 dark:to-primary/0 bg-clip-text text-transparent">
             First Team Trucking
           </h2>
         </motion.a>
@@ -94,16 +99,36 @@ export default function Navbar() {
             { href: "/#about", label: "About Us", sectionId: "about" },
             { href: "/#why-ftt", label: "Why FTT", sectionId: "why-ftt" },
             { href: "/#benefits", label: "Benefits", sectionId: "benefits" },
-            { href: "/#requirements", label: "Requirements", sectionId: "requirements" },
-            { href: "/#sign-on-bonus", label: "Sign-On Bonus", sectionId: "sign-on-bonus" },
-            { href: "/#pay-growth", label: "Pay & Growth", sectionId: "pay-growth" },
+            {
+              href: "/#requirements",
+              label: "Requirements",
+              sectionId: "requirements",
+            },
+            {
+              href: "/#sign-on-bonus",
+              label: "Sign-On Bonus",
+              sectionId: "sign-on-bonus",
+            },
+            {
+              href: "/#pay-growth",
+              label: "Pay & Growth",
+              sectionId: "pay-growth",
+            },
             { href: "/gallery", label: "Gallery", sectionId: null },
-            { href: "/#testimonials", label: "Testimonials", sectionId: "testimonials" },
+            {
+              href: "/#testimonials",
+              label: "Testimonials",
+              sectionId: "testimonials",
+            },
           ].map((item) => (
             <motion.a
               key={item.href}
               href={item.href}
-              onClick={(e) => item.sectionId ? handleSmoothScroll(e, item.sectionId) : undefined}
+              onClick={(e) =>
+                item.sectionId
+                  ? handleSmoothScroll(e, item.sectionId)
+                  : undefined
+              }
               className="text-sm font-semibold text-slate-700 dark:text-white/70 transition-colors hover:text-primary whitespace-nowrap"
               whileHover={{ y: -2 }}
               transition={{ duration: 0.2 }}
@@ -154,12 +179,32 @@ export default function Navbar() {
                 { label: "Home", sectionId: "home", href: "/#home" },
                 { label: "About Us", sectionId: "about", href: "/#about" },
                 { label: "Why FTT", sectionId: "why-ftt", href: "/#why-ftt" },
-                { label: "Benefits", sectionId: "benefits", href: "/#benefits" },
-                { label: "Requirements", sectionId: "requirements", href: "/#requirements" },
-                { label: "Sign-On Bonus", sectionId: "sign-on-bonus", href: "/#sign-on-bonus" },
-                { label: "Pay & Growth", sectionId: "pay-growth", href: "/#pay-growth" },
+                {
+                  label: "Benefits",
+                  sectionId: "benefits",
+                  href: "/#benefits",
+                },
+                {
+                  label: "Requirements",
+                  sectionId: "requirements",
+                  href: "/#requirements",
+                },
+                {
+                  label: "Sign-On Bonus",
+                  sectionId: "sign-on-bonus",
+                  href: "/#sign-on-bonus",
+                },
+                {
+                  label: "Pay & Growth",
+                  sectionId: "pay-growth",
+                  href: "/#pay-growth",
+                },
                 { label: "Gallery", sectionId: null, href: "/gallery" },
-                { label: "Testimonials", sectionId: "testimonials", href: "/#testimonials" },
+                {
+                  label: "Testimonials",
+                  sectionId: "testimonials",
+                  href: "/#testimonials",
+                },
               ].map((item) => (
                 <a
                   key={item.label}

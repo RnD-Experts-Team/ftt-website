@@ -230,6 +230,27 @@ export default function FeaturedVideoSection() {
                 ))}
               </div>
               
+              {/* Navigation Arrows */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setCurrentSlide(currentSlide <= 0 ? SLIDES.length - 1 : currentSlide - 1)}
+                  className="size-10 rounded-full border border-slate-300 dark:border-slate-700 flex items-center justify-center hover:bg-primary hover:border-primary text-slate-800 dark:text-white transition-all group"
+                  aria-label="Previous slide"
+                >
+                  <span className="material-symbols-outlined text-xl group-hover:text-white">
+                    arrow_back
+                  </span>
+                </button>
+                <button
+                  onClick={() => setCurrentSlide(currentSlide >= SLIDES.length - 1 ? 0 : currentSlide + 1)}
+                  className="size-10 rounded-full border border-slate-300 dark:border-slate-700 flex items-center justify-center hover:bg-primary hover:border-primary text-slate-800 dark:text-white transition-all group"
+                  aria-label="Next slide"
+                >
+                  <span className="material-symbols-outlined text-xl group-hover:text-white">
+                    arrow_forward
+                  </span>
+                </button>
+              </div>
             </div>
           </motion.div>
         </div>

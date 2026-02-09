@@ -99,7 +99,7 @@ export default function HeroSection() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="mb-10 max-w-3xl text-base sm:text-lg md:text-xl leading-relaxed text-slate-600 dark:text-slate-300"
+            className="mb-10 max-w-3xl text-base sm:text-lg md:text-xl leading-relaxed text-slate-900 dark:text-slate-300"
           >
             <motion.span
               initial={{ opacity: 0, x: -20 }}
@@ -129,44 +129,7 @@ export default function HeroSection() {
             </button>
           </motion.div>
 
-          {/* Quick Stats */}
-          <motion.div
-            variants={statsVariants}
-            className="mt-16 grid grid-cols-2 gap-8 border-t border-slate-200 dark:border-white/10 pt-10 md:grid-cols-4"
-          >
-            <motion.div variants={statItemVariants} className="flex flex-col">
-              <span className="text-3xl font-brand font-black italic text-slate-900 dark:text-white">
-                $75k+
-              </span>
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                Avg. Earnings
-              </span>
-            </motion.div>
-            <motion.div variants={statItemVariants} className="flex flex-col">
-              <span className="text-3xl font-brand font-black italic text-slate-900 dark:text-white">
-                Daily
-              </span>
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                Home Time
-              </span>
-            </motion.div>
-            <motion.div variants={statItemVariants} className="flex flex-col">
-              <span className="text-3xl font-brand font-black italic text-slate-900 dark:text-white">
-                Brand New
-              </span>
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                Fleet Quality
-              </span>
-            </motion.div>
-            <motion.div variants={statItemVariants} className="flex flex-col">
-              <span className="text-3xl font-brand font-black italic text-slate-900 dark:text-white">
-                Indy
-              </span>
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                Base Hub
-              </span>
-            </motion.div>
-          </motion.div>
+          
         </motion.div>
       </SectionContainer>
 
