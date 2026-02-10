@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
-    <div className="bg-background text-foreground min-h-screen">
+    <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-[#f8efef] dark:bg-slate-900">
       <Navbar />
-      <main className="pt-20">
+      <main className="flex-1 w-full pt-20">
         <GalleryHeroSection />
         <GalleryGridSection />
         <GalleryActionBarSection />

@@ -50,8 +50,10 @@ const galleryItems = [
 
 export default function GalleryGridSection() {
   return (
-    <SectionContainer size="xl" noPaddingY className="mb-12">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-12 md:py-16">
+      <SectionContainer size="xl" noPaddingY>
       <GalleryGrid items={galleryItems} shuffle={true} />
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

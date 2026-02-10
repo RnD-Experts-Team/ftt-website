@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import SectionContainer from "@/app/components/layout/SectionContainer";
-import VideoPlayer from "@/app/components/common/VideoPlayer";
+import VideoPlayer, { VideoPlayerRef } from "@/app/components/common/VideoPlayer";
 
 // Animation variants for horizontal slide-in
 const textBlockVariants = {
@@ -46,10 +46,24 @@ const blobVariants = {
 
 export default function OwnerMessageSection() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoPlayerRef = useRef<VideoPlayerRef>(null);
+
+  const handleScrollToVideo = () => {
+    // Scroll to video
+    const videoElement = document.getElementById('owner-message-video');
+    if (videoElement) {
+      videoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    // Toggle play/pause after a short delay to allow scroll
+    setTimeout(() => {
+      videoPlayerRef.current?.toggle();
+    }, 500);
+  };
 
   return (
-    <section className="relative w-full border-t border-b border-slate-200 dark:border-slate-800 overflow-hidden">
-      <SectionContainer size="xl">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 border-t border-b border-slate-200 dark:border-slate-800 overflow-hidden py-16 md:py-20">
+      <SectionContainer size="xl" noPaddingY>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content: Text Block */}
           <motion.div
@@ -65,7 +79,7 @@ export default function OwnerMessageSection() {
               </span>
             </div>
             <h2 className="text-slate-900 dark:text-white text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
-              A Message from Shawn, Owner
+              A Message from the Owner: 
             </h2>
             <motion.div 
               className="space-y-4"
@@ -92,7 +106,7 @@ export default function OwnerMessageSection() {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 style={{ transformPerspective: 1000 }}
               >
-                As an Amazon Freight Partner, we operate with high standards for safety, reliability, and professionalism. But what truly sets us apart is how we support our drivers.
+                Our pay structure is built to reward your performance with predictable, consistent earnings. You'll haul Amazon freight on set lanes, meaning no guesswork and no surprises.
               </motion.p>
               <motion.p 
                 className="text-slate-600 dark:text-white/90 text-base sm:text-lg font-normal leading-relaxed"
@@ -107,8 +121,9 @@ export default function OwnerMessageSection() {
             </motion.div>
             <div className="pt-4">
               <button
-                onClick={() => setIsVideoPlaying(!isVideoPlaying)}
-                className="group flex items-center justify-center gap-3 min-w-50 h-14 rounded-lg bg-primary text-white text-lg font-bold transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 p-5"
+                type="button"
+                onClick={handleScrollToVideo}
+                className="group flex items-center justify-center gap-3 min-w-50 h-14 rounded-lg bg-primary text-white text-lg font-bold transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 p-5 cursor-pointer"
               >
                 <span className="material-symbols-outlined">play_circle</span>
                 <span>Watch Shawn&apos;s Message</span>
@@ -118,6 +133,7 @@ export default function OwnerMessageSection() {
 
           {/* Right Content: Video Player */}
           <motion.div
+            id="owner-message-video"
             className="relative group"
             initial="hidden"
             whileInView="visible"
@@ -139,6 +155,7 @@ export default function OwnerMessageSection() {
 
             {/* Video Container */}
             <VideoPlayer
+              ref={videoPlayerRef}
               videoSrc="/Shawn.mp4"
               title="A Message from Shawn, Owner"
               showControls={true}

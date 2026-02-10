@@ -85,7 +85,8 @@ export default function DetailedBenefitsSection() {
   ];
 
   return (
-    <SectionContainer size="xl" className="overflow-x-hidden py-12 sm:py-16 md:py-20">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-12 sm:py-16 md:py-20">
+      <SectionContainer size="xl" noPaddingY className="overflow-x-hidden">
       {/* Header */}
       <motion.div
         variants={fadeLeft}
@@ -203,6 +204,7 @@ export default function DetailedBenefitsSection() {
           </ul>
         </motion.div>
       </div>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

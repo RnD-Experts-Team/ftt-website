@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { motion } from 'framer-motion';
 
 interface VideoPlayerProps {
@@ -16,7 +16,14 @@ interface VideoPlayerProps {
   onPlayStateChange?: (isPlaying: boolean) => void;
 }
 
-export default function VideoPlayer({
+export interface VideoPlayerRef {
+  play: () => void;
+  pause: () => void;
+  toggle: () => void;
+  isPlaying: () => boolean;
+}
+
+const VideoPlayer = forwardRef<VideoPlayerRef, VideoPlayerProps>(function VideoPlayer({
   videoSrc = '/Shawn.mp4',
   posterSrc,
   title = 'Video',
@@ -27,12 +34,33 @@ export default function VideoPlayer({
   muted = false,
   aspectRatio = 'video',
   onPlayStateChange,
-}: VideoPlayerProps) {
+}, ref) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Expose methods to parent component
+  useImperativeHandle(ref, () => ({
+    play: () => {
+      videoRef.current?.play();
+    },
+    pause: () => {
+      videoRef.current?.pause();
+    },
+    toggle: () => {
+      const video = videoRef.current;
+      if (video) {
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    },
+    isPlaying: () => isPlaying,
+  }));
 
   const aspectClasses = {
     video: 'aspect-video',
@@ -227,4 +255,8 @@ export default function VideoPlayer({
       )}
     </div>
   );
-}
+});
+
+VideoPlayer.displayName = 'VideoPlayer';
+
+export default VideoPlayer;

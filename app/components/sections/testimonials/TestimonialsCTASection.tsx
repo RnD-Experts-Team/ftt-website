@@ -17,9 +17,10 @@ const ctaVariants = {
 
 export default function TestimonialsCTASection() {
   return (
-    <SectionContainer size="xl" className="mt-16 md:mt-24">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 ">
+      <SectionContainer size="xl" noPaddingY>
       <motion.div
-        className="text-center border-t border-slate-200 dark:border-slate-800 pt-12 md:pt-16"
+        className="text-center border-t border-slate-200 dark:border-slate-800 pt-6 md:pt-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -36,11 +37,12 @@ export default function TestimonialsCTASection() {
         <button className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-lg hover:bg-red-700 transition-colors shadow-lg shadow-primary/20">
           Apply Now
         </button>
-        <button className="w-full sm:w-auto px-8 py-4 border-2 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
-          Learn More
+        <button className="w-full sm:w-auto px-8 py-4  bg-slate-100 hover:bg-slate-200 text-slate-900 dark:bg-white dark:hover:bg-gray-100 dark:text-black font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+          Contact with Us
         </button>
       </div>
       </motion.div>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

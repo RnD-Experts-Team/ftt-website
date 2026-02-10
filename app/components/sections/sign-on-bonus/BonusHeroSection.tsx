@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import SectionContainer from "@/app/components/layout/SectionContainer";
+import Link from "next/link";
 
 const contentVariants = {
   hidden: { opacity: 0, x: -60, y: 60 },
@@ -74,7 +75,8 @@ const listItemVariants = {
 
 export default function BonusHeroSection() {
   return (
-    <SectionContainer size="xl" noPaddingY className="mb-10 md:mb-12">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-10 md:py-12">
+      <SectionContainer size="xl" noPaddingY>
       <div className="relative overflow-hidden rounded-3xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
         <motion.div
@@ -145,13 +147,10 @@ export default function BonusHeroSection() {
             </motion.ul>
           </motion.div>
           <motion.div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4" variants={itemVariants}>
-            <button className="bg-primary hover:bg-red-700 text-white px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 rounded-lg text-sm sm:text-base font-bold transition-all flex items-center justify-center gap-2">
-              Check Eligibility
-              <span className="material-symbols-outlined">arrow_forward</span>
-            </button>
-            <button className="border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-900 text-slate-900 dark:text-white px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 rounded-lg text-sm sm:text-base font-bold transition-all">
-              View Routes
-            </button>
+            <Link href="/apply-now" className="flex min-w-40 sm:min-w-50 cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 sm:px-7 sm:py-4 md:px-8 md:py-5 text-base sm:text-lg font-black uppercase tracking-widest text-white transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(235,25,32,0.2)] dark:shadow-[0_0_30px_rgba(235,25,32,0.4)]">
+              APPLY NOW
+              <span className="material-symbols-outlined">trending_flat</span>
+            </Link>
           </motion.div>
         </motion.div>
         <motion.div
@@ -170,6 +169,7 @@ export default function BonusHeroSection() {
         </motion.div>
       </div>
       </div>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

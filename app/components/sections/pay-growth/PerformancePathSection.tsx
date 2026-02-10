@@ -82,7 +82,8 @@ export default function PerformancePathSection() {
   ];
 
   return (
-    <SectionContainer size="xl" className="py-24 bg-background-light dark:bg-background-dark relative mb-16 rounded-3xl">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-16 md:py-24">
+      <SectionContainer size="xl" noPaddingY>
       <motion.div
         className="text-center mb-16"
         initial="hidden"
@@ -164,6 +165,7 @@ export default function PerformancePathSection() {
           </motion.div>
         ))}
       </div>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

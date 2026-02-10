@@ -97,7 +97,7 @@ export default function Footer() {
       {/* FTT Shadow Pattern Background */}
       <div className="absolute inset-0 pointer-events-none select-none opacity-[0.08] dark:opacity-[0.06]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center">
-          <span className="font-brand text-[25rem] md:text-[35rem] lg:text-[45rem] font-black italic tracking-tighter text-slate-900 dark:text-white whitespace-nowrap">
+          <span className="font-brand text-[25rem] md:text-[35rem] lg:text-[45rem] font-black italic tracking-tighter text-red-500 dark:text-white whitespace-nowrap">
             F T T
           </span>
         </div>
@@ -241,17 +241,7 @@ export default function Footer() {
                   </p>
                 </div>
               </motion.div>
-              <motion.div 
-                className="mt-2 h-24 w-full rounded-lg bg-slate-100 dark:bg-white/5 overflow-hidden"
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-              >
-                <img
-                  alt="Stylized map showing Indianapolis location"
-                  className="w-full h-full object-cover opacity-50 contrast-125 grayscale"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgLLdJXIrqzyjeonIcbEAcWDweEHWeX3H46bpXlDTzpnp8Lb6piJ6Z-nB8IXx3Fq_pcwRZKD0ubjLfzk6FhykUFJi5j0VBob8mVBzkM-aLey5mi650AgIdJXxJA8Vj8zRndbBJrICUIyo0qKVI7Sf6nzKiHhcl6zq4SfLfQvRnl7FYSsIrqdPLoV1Pw7QuwSjA72JoZcP7MCCtax9pyP-6m3tHjzQfwBnsTCpa-wDMylDRtoX5kFe7vjkPr7ihuU-alze3-BH3AyM"
-                />
-              </motion.div>
+              
             </div>
           </motion.div>
 

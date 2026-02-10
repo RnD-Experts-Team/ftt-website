@@ -3,111 +3,46 @@
 import { motion } from "framer-motion";
 import SectionContainer from "@/app/components/layout/SectionContainer";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
+const ctaVariants = {
+  hidden: { opacity: 0, scale: 0.98 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const buttonVariants = {
-  hidden: { opacity: 0, y: -60, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: "spring" as const,
-      stiffness: 100,
-      damping: 15,
-    },
-  },
-};
-
-const badgeContainerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 0.6,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.4,
-    },
-  },
-};
-
-const badgeVariants = {
-  hidden: (index: number) => {
-    const angles = [-120, 0, 120];
-    const angle = (angles[index] * Math.PI) / 180;
-    return {
-      opacity: 0,
-      x: Math.cos(angle) * 60,
-      y: Math.sin(angle) * 60,
-      scale: 0.5,
-    };
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
     scale: 1,
     transition: {
       duration: 0.6,
-      ease: [0.34, 1.56, 0.64, 1] as const,
+      ease: [0.25, 0.1, 0.25, 1] as const,
     },
   },
 };
 
-export default function RequirementsCTASection() {
-  const badges = [
-    { icon: "security", text: "Secure Process" },
-    { icon: "timer", text: "Apply in 5 Mins" },
-    { icon: "group", text: "Equal Opportunity Employer" },
-  ];
-
+export default function TestimonialsCTASection() {
   return (
-    <SectionContainer size="xl" noPaddingY className="mb-16">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-12 md:py-16 bg-linear-to-b from-transparent  to-primary/10">
+      <SectionContainer size="xl" noPaddingY>
       <motion.div
-        className="flex flex-col items-center gap-4 sm:gap-6 mb-12 sm:mb-16 px-4 sm:px-6 lg:px-8 xl:px-0"
+        className="text-center border-t border-slate-200 dark:border-slate-800 pt-6 md:pt-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
+        variants={ctaVariants}
       >
-        <motion.button
-          className="w-full sm:w-auto sm:min-w-[280px] md:min-w-[320px] bg-primary hover:bg-red-700 text-white py-4 sm:py-5 px-6 sm:px-8 rounded-lg sm:rounded-xl text-base sm:text-lg font-black tracking-widest uppercase transition-colors transform shadow-2xl shadow-primary/30"
-          variants={buttonVariants}
-          whileHover={{ scale: 1.05, y: -5 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Start Your Application
-        </motion.button>
-        <motion.div
-          className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8"
-          variants={badgeContainerVariants}
-        >
-          {badges.map((badge, index) => (
-            <motion.div
-              key={index}
-              className="flex items-center gap-1.5 sm:gap-2"
-              custom={index}
-              variants={badgeVariants}
-              whileHover={{ scale: 1.1, opacity: 1 }}
-            >
-              <span className="material-symbols-outlined text-sm sm:text-base text-slate-700 dark:text-slate-300">
-                {badge.icon}
-              </span>
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                {badge.text}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
+      <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-6">
+        Ready to Join the Team?
+      </h2>
+      <p className="text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-10 text-lg">
+        Experience the First Team Trucking difference today. Competitive pay,
+        modern equipment, and a culture that cares.
+      </p>
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-lg hover:bg-red-700 transition-colors shadow-lg shadow-primary/20">
+          Apply Now
+        </button>
+        <button className="w-full sm:w-auto px-8 py-4 bg-slate-100 hover:bg-slate-200 text-slate-900 dark:bg-white dark:hover:bg-gray-100 dark:text-black font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+          Learn More
+        </button>
+      </div>
       </motion.div>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

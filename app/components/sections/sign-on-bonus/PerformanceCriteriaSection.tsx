@@ -91,7 +91,8 @@ export default function PerformanceCriteriaSection() {
   ];
 
   return (
-    <SectionContainer size="xl" noPaddingY className="mb-12 md:mb-16">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-12 md:py-16">
+      <SectionContainer size="xl" noPaddingY>
       <motion.section
         className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-xl p-6 sm:p-7 md:p-8 lg:p-10 xl:p-12"
         initial="hidden"
@@ -142,6 +143,7 @@ export default function PerformanceCriteriaSection() {
         </div>
       </div>
       </motion.section>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

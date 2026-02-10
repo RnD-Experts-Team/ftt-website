@@ -44,7 +44,8 @@ export default function GalleryHeroSection() {
   };
 
   return (
-    <SectionContainer size="xl" className="py-16">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-16 md:py-20">
+      <SectionContainer size="xl" noPaddingY>
       <motion.div
         className="flex flex-col items-center text-center mb-16"
         initial="hidden"
@@ -74,6 +75,7 @@ export default function GalleryHeroSection() {
           our Indianapolis facility.
         </motion.p>
       </motion.div>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

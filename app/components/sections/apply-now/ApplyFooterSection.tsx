@@ -94,7 +94,7 @@ export default function ApplyFooterSection() {
   };
 
   return (
-    <footer className="bg-slate-50 dark:bg-[#050607] border-t border-slate-200 dark:border-white/10 py-16">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-16">
       <SectionContainer size="xl" noPaddingY>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
@@ -329,6 +329,6 @@ export default function ApplyFooterSection() {
           </div>
         </motion.div>
       </SectionContainer>
-    </footer>
+    </section>
   );
 }

@@ -66,7 +66,8 @@ const textItemVariants = {
 
 export default function RequirementsImageSection() {
   return (
-    <SectionContainer size="xl" noPaddingY className="pb-16 sm:pb-20 md:pb-24">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-16 sm:py-20 md:py-24">
+      <SectionContainer size="xl" noPaddingY>
       <motion.div
         className="max-w-7xl h-70 sm:h-87.5 md:h-100 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden relative group mx-4 sm:mx-6 md:mx-auto"
         initial="hidden"
@@ -103,6 +104,7 @@ export default function RequirementsImageSection() {
           </motion.p>
         </motion.div>
       </motion.div>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

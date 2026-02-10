@@ -55,7 +55,7 @@ export default function GalleryFooterSection() {
   };
 
   return (
-    <footer className="bg-slate-50 dark:bg-section-alt border-t border-slate-200 dark:border-card-border py-12">
+    <footer className="relative w-full bg-[#f8efef] dark:bg-slate-900 border-t border-slate-200 dark:border-card-border py-12">
       <SectionContainer size="xl" noPaddingY>
       <motion.div
         className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8"

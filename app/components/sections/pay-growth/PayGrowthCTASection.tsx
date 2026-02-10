@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import SectionContainer from "@/app/components/layout/SectionContainer";
+import Link from "next/link";
 
 const containerVariants = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -45,9 +46,10 @@ const backgroundVariants = {
 
 export default function PayGrowthCTASection() {
   return (
-    <SectionContainer size="xl" noPaddingY className="py-12 sm:py-16 md:py-20 relative overflow-hidden rounded-3xl">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-12 sm:py-16 md:py-20 rounded-3xl">
+      <SectionContainer size="xl" noPaddingY className="relative overflow-hidden rounded-3xl p-8">
       <motion.div
-        className="absolute inset-0 bg-primary opacity-5"
+        className="absolute inset-0 bg-primary opacity-5 rounded-3xl "
         variants={backgroundVariants}
         initial="initial"
         animate="animate"
@@ -84,10 +86,18 @@ export default function PayGrowthCTASection() {
             whileHover={{ scale: 1.08, y: -3 }}
             whileTap={{ scale: 0.95 }}
           >
-            Join the Team Now
+            <Link
+                href="/apply-now"
+                className="flex items-center justify-center gap-2"
+                
+              >
+                APPLY NOW
+                <span className="material-symbols-outlined">trending_flat</span>
+              </Link>
           </motion.button>
         </motion.div>
       </motion.div>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

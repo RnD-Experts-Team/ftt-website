@@ -97,29 +97,8 @@ export default function Navbar() {
           {[
             { href: "/#home", label: "Home", sectionId: "home" },
             { href: "/#about", label: "About Us", sectionId: "about" },
-            { href: "/#why-ftt", label: "Why FTT", sectionId: "why-ftt" },
-            { href: "/#benefits", label: "Benefits", sectionId: "benefits" },
-            {
-              href: "/#requirements",
-              label: "Requirements",
-              sectionId: "requirements",
-            },
-            {
-              href: "/#sign-on-bonus",
-              label: "Sign-On Bonus",
-              sectionId: "sign-on-bonus",
-            },
-            {
-              href: "/#pay-growth",
-              label: "Pay & Growth",
-              sectionId: "pay-growth",
-            },
+
             { href: "/gallery", label: "Gallery", sectionId: null },
-            {
-              href: "/#testimonials",
-              label: "Testimonials",
-              sectionId: "testimonials",
-            },
           ].map((item) => (
             <motion.a
               key={item.href}
@@ -178,33 +157,8 @@ export default function Navbar() {
               {[
                 { label: "Home", sectionId: "home", href: "/#home" },
                 { label: "About Us", sectionId: "about", href: "/#about" },
-                { label: "Why FTT", sectionId: "why-ftt", href: "/#why-ftt" },
-                {
-                  label: "Benefits",
-                  sectionId: "benefits",
-                  href: "/#benefits",
-                },
-                {
-                  label: "Requirements",
-                  sectionId: "requirements",
-                  href: "/#requirements",
-                },
-                {
-                  label: "Sign-On Bonus",
-                  sectionId: "sign-on-bonus",
-                  href: "/#sign-on-bonus",
-                },
-                {
-                  label: "Pay & Growth",
-                  sectionId: "pay-growth",
-                  href: "/#pay-growth",
-                },
                 { label: "Gallery", sectionId: null, href: "/gallery" },
-                {
-                  label: "Testimonials",
-                  sectionId: "testimonials",
-                  href: "/#testimonials",
-                },
+
               ].map((item) => (
                 <a
                   key={item.label}

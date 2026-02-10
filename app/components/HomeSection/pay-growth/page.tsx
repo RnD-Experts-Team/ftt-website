@@ -10,13 +10,11 @@ import PayGrowthCTASection from "@/app/components/sections/pay-growth/PayGrowthC
 
 export default function PayGrowth() {
   return (
-    
-    <div className="max-w-7xl px-6 mx-auto w-full py-16 lg:py-24  ">
+    <main className="min-h-screen bg-[#f8efef] dark:bg-slate-900 w-full pt-20">
       <PayGrowthHeroSection />
-      <PerformancePathSection />
+      {/* <PerformancePathSection /> */}
       {/* <TieredComparisonSection /> */}
       <PayGrowthCTASection />
-    </div>
-    
+    </main>
   );
 }

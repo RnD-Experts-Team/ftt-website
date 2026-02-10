@@ -90,11 +90,12 @@ const listItemVariants: Variants = {
 
 export default function PayGrowthHeroSection() {
   return (
-    <SectionContainer
-      size="xl"
-      noPaddingY
-      className="relative pb-16 sm:pb-20 overflow-x-hidden"
-    >
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-16 md:py-20">
+      <SectionContainer
+        size="xl"
+        noPaddingY
+        className="relative overflow-x-hidden"
+      >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* LEFT CONTENT */}
         <motion.div
@@ -211,6 +212,7 @@ export default function PayGrowthHeroSection() {
           />
         </motion.div>
       </div>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

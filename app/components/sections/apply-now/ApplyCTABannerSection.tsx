@@ -122,7 +122,8 @@ export default function ApplyCTABannerSection() {
   };
 
   return (
-    <SectionContainer size="xl" className="bg-gray-100 dark:bg-slate-800 border-y border-slate-200 dark:border-slate-800 py-24 md:py-32 text-center overflow-hidden">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 py-24 md:py-32 overflow-hidden">
+      <SectionContainer size="xl" noPaddingY>
       <motion.div
         className="max-w-[840px] mx-auto space-y-8"
         initial="hidden"
@@ -145,7 +146,7 @@ export default function ApplyCTABannerSection() {
         </div>
         
         <motion.p
-          className="text-slate-600 dark:text-slate-400 text-base sm:text-lg md:text-xl font-medium max-w-[650px] mx-auto leading-relaxed"
+          className="text-slate-600 dark:text-slate-400 text-start sm:text-lg md:text-xl font-medium max-w-[650px]  leading-relaxed"
           variants={textVariants}
         >
           <motion.span
@@ -203,6 +204,7 @@ export default function ApplyCTABannerSection() {
           Amazon Freight Partner Program
         </motion.div>
       </motion.div>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

@@ -8,8 +8,8 @@ export const metadata = {
 
 export default function OwnerMessage() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col">
-      <main >
+    <div className="relative flex w-full flex-col bg-[#f8efef] dark:bg-slate-900 pt-20">
+      <main>
         <OwnerMessageSection/>
       </main>
     </div>

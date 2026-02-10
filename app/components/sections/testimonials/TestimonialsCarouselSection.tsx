@@ -112,9 +112,10 @@ export default function TestimonialsCarouselSection() {
   }, [testimonials.length]);
 
   return (
-    <SectionContainer size="xl">
-      {/* Header Text */}
-      <motion.div
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-16 md:py-20">
+      <SectionContainer size="xl" noPaddingY>
+        {/* Header Text */}
+        <motion.div
         className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
         initial="hidden"
         whileInView="visible"
@@ -129,8 +130,7 @@ export default function TestimonialsCarouselSection() {
             What Our Drivers Say
           </h1>
           <p className="mt-4 text-slate-600 dark:text-slate-400 text-lg">
-            Hear from the professionals who keep the wheels turning. Real
-            stories from the heart of First Team Trucking.
+            At First Team Trucking, we believe the best way to understand our company is to hear directly from the drivers who keep us moving.
           </p>
         </div>
 
@@ -220,6 +220,7 @@ export default function TestimonialsCarouselSection() {
           display: none;
         }
       `}</style>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }

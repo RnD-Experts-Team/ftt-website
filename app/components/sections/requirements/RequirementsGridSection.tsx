@@ -76,7 +76,8 @@ export default function RequirementsGridSection() {
   ];
 
   return (
-    <SectionContainer size="xl" noPaddingY className="mb-12 sm:mb-14 md:mb-16">
+    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-12 sm:py-14 md:py-16">
+      <SectionContainer size="xl" noPaddingY>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-12 sm:mb-14 md:mb-16 px-4 sm:px-6 lg:px-8 xl:px-0">
         {requirements.map((requirement, index) => (
           <motion.div
@@ -113,6 +114,7 @@ export default function RequirementsGridSection() {
           </motion.div>
         ))}
       </div>
-    </SectionContainer>
+      </SectionContainer>
+    </section>
   );
 }
