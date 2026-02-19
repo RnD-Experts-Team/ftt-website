@@ -24,6 +24,13 @@ const materialSymbols = localFont({
   display: "swap",
 });
 
+const sragen = localFont({
+  src: "../public/fonts/sragenbold.ttf",
+  variable: "--font-sragen",
+  weight: "700",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "First Team Trucking",
   description: "First Team Trucking - Join Our Team",
@@ -37,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body
-        className={`${inter.variable} ${barlowCondensed.variable} ${materialSymbols.variable} antialiased font-display`}
+        className={`${inter.variable} ${barlowCondensed.variable} ${sragen.variable} ${materialSymbols.variable} antialiased font-display`}
       >
         {children}
       </body>

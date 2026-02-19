@@ -84,6 +84,7 @@
   --font-condensed: var(--font-barlow-condensed), sans-serif;
   --font-header: var(--font-barlow-condensed), sans-serif;
   --font-material-symbols: var(--font-material-symbols);
+  --font-sragen: var(--font-sragen);
 
   /* Border Radius */
   --radius-sm: 0.25rem;
@@ -104,6 +105,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-display);
+}
+
+/* Headings — use Sragen when available */
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-sragen), var(--font-display);
+  font-weight: 700;
 }
 
 /* Material Symbols Icon Styling */
