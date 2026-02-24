@@ -72,7 +72,7 @@ const listItemVariants = {
 
 export default function RequirementsHeroSection() {
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-12 sm:py-16 md:py-24">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 py-12 sm:py-16 md:py-24">
       <SectionContainer size="xl" noPaddingY>
       <motion.div
         className="text-center mb-12 md:mb-16 px-4 sm:px-6 lg:px-8 xl:px-0"

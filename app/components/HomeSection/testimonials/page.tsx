@@ -4,7 +4,7 @@ import TestimonialsCTASection from "../../sections/testimonials/TestimonialsCTAS
 
 export default function Testimonials() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col bg-[#f8efef] dark:bg-slate-900 pt-20">
+    <div className="relative flex min-h-screen w-full flex-col bg-[#E8E8E0] dark:bg-slate-900 pt-20">
         <TestimonialsCarouselSection />
         {/* <FeaturedVideoSection /> */}
         <TestimonialsCTASection />

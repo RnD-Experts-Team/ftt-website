@@ -1,15 +1,24 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Local Sragen Bold font */
+@font-face {
+  font-family: 'Sragen';
+  src: url('/fonts/sragenbold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Enable class-based dark mode (uses .dark class on <html>) */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Custom Theme Variables — Light Mode (default) */
 :root {
-  --background: #f8f6f6;
+  --background: #E8E8E0;
   --foreground: #090C0E;
   --primary: #eb1920;
-  --background-light: #f8f6f6;
+  --background-light: #E8E8E0;
   --background-dark: #090C0E;
   --charcoal: #1a1d20;
   --charcoal-accent: #2a2d30;
@@ -30,12 +39,16 @@
   --sidebar-accent-foreground: hsl(240 5.9% 10%);
   --sidebar-border: hsl(220 13% 91%);
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  /* Global margin/background accent color */
+  --background-margin: #E8E8E0;
+  /* Composite page background: margin color on edges, main background center */
+  --page-background-style: linear-gradient(90deg, var(--background-margin) 0% 5%, var(--background) 5% 95%, var(--background-margin) 95% 100%);
 }
 
 /* Dark Mode Overrides */
 .dark {
   --background: #090C0E;
-  --foreground: #f8f6f6;
+  --foreground: #E8E8E0;
   --background-light: #090C0E;
   --background-dark: #090C0E;
   --charcoal: #090C0E;
@@ -56,6 +69,8 @@
   --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
   --sidebar-border: hsl(240 3.7% 15.9%);
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  --background-margin: #E8E8E0;
+  --page-background-style: linear-gradient(90deg, var(--background-margin) 0% 5%, var(--background) 5% 95%, var(--background-margin) 95% 100%);
 }
 
 /* Tailwind 4 Theme Configuration */
@@ -84,7 +99,7 @@
   --font-condensed: var(--font-barlow-condensed), sans-serif;
   --font-header: var(--font-barlow-condensed), sans-serif;
   --font-material-symbols: var(--font-material-symbols);
-  --font-sragen: var(--font-sragen);
+  --font-sragen: 'Sragen', var(--font-display);
 
   /* Border Radius */
   --radius-sm: 0.25rem;
@@ -102,9 +117,9 @@
 
 /* Base Styles */
 body {
-  background: var(--background);
+  background: var(--page-background-style);
   color: var(--foreground);
-  font-family: var(--font-display);
+  font-family: var(--font-sragen);
 }
 
 /* Headings — use Sragen when available */
@@ -139,6 +154,11 @@ h1,h2,h3,h4,h5,h6 {
 
 .font-inter {
   font-family: var(--font-display);
+}
+
+/* Sragen font utility */
+.font-sragen {
+  font-family: var(--font-sragen);
 }
 
 /* Smooth Scrolling with Fixed Navbar Offset */

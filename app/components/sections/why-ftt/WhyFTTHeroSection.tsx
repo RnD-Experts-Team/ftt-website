@@ -90,10 +90,14 @@ export default function WhyFTTHeroSection() {
       icon: "home",
       text: "Be home every other day on single-shift schedules",
     },
+    {
+      icon: "payments",
+      text: "Probation Period & Sign-On Bonus",
+    },
   ];
 
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 ">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900  mt-5">
       <SectionContainer size="xl" noPaddingY>
       <div className="space-y-12">
         <div className="text-center space-y-4">

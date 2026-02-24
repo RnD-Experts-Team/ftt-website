@@ -17,10 +17,10 @@ const ctaVariants = {
 
 export default function TestimonialsCTASection() {
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-12 md:py-16 bg-linear-to-b from-transparent  to-primary/10">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 py-12 md:py-16 bg-linear-to-b from-transparent  to-primary/5">
       <SectionContainer size="xl" noPaddingY>
       <motion.div
-        className="text-center border-t border-slate-200 dark:border-slate-800 pt-6 md:pt-8"
+        className="text-center  pt-6 md:pt-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}

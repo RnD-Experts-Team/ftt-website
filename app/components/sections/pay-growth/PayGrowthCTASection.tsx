@@ -46,10 +46,10 @@ const backgroundVariants = {
 
 export default function PayGrowthCTASection() {
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-12 sm:py-16 md:py-20 rounded-3xl">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 py-12 sm:py-16 md:py-20 rounded-3xl">
       <SectionContainer size="xl" noPaddingY className="relative overflow-hidden rounded-3xl p-8">
       <motion.div
-        className="absolute inset-0 bg-primary opacity-5 rounded-3xl "
+        className="absolute inset-0 bg-[#E8E8E0] opacity-5 rounded-3xl "
         variants={backgroundVariants}
         initial="initial"
         animate="animate"

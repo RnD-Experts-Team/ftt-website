@@ -82,7 +82,7 @@ export default function PerformancePathSection() {
   ];
 
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-16 md:py-24">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 py-16 md:py-24">
       <SectionContainer size="xl" noPaddingY>
       <motion.div
         className="text-center mb-16"

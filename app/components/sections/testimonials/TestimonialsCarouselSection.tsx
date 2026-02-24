@@ -112,7 +112,7 @@ export default function TestimonialsCarouselSection() {
   }, [testimonials.length]);
 
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-16 md:py-20">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 py-16 md:py-20">
       <SectionContainer size="xl" noPaddingY>
         {/* Header Text */}
         <motion.div

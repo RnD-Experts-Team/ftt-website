@@ -57,10 +57,10 @@ const buttonVariants = {
 
 export default function BonusCTASection() {
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-10 sm:py-12 md:py-14 lg:py-16">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 py-10 sm:py-12 md:py-14 lg:py-16">
       <SectionContainer size="xl" noPaddingY>
         <motion.div
-          className="text-center space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 border-t border-slate-200 dark:border-gray-800 pt-10 sm:pt-12 md:pt-14 lg:pt-16"
+          className="text-center space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 pt-10 sm:pt-12 md:pt-14 lg:pt-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}

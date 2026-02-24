@@ -20,7 +20,7 @@ export default function DashboardLayout({
       }
     >
       <AppSidebar />
-      <main className="relative flex min-h-svh flex-1 flex-col bg-background">
+      <main style={{ fontFamily: 'var(--font-display)' }} className="relative flex min-h-svh flex-1 flex-col bg-background">
         <SiteHeader />
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">

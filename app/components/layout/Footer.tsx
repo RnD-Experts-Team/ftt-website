@@ -97,7 +97,7 @@ export default function Footer() {
       {/* FTT Shadow Pattern Background */}
       <div className="absolute inset-0 pointer-events-none select-none opacity-[0.08] dark:opacity-[0.06]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center">
-          <span className="font-brand text-[25rem] md:text-[35rem] lg:text-[45rem] font-black italic tracking-tighter text-red-500 dark:text-white whitespace-nowrap">
+          <span className="font-brand text-[25rem] md:text-[35rem] lg:text-[45rem] font-black italic tracking-tighter text-[#80804a] dark:text-white whitespace-nowrap">
             F T T
           </span>
         </div>

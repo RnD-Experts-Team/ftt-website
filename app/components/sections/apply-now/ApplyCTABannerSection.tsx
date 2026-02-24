@@ -122,7 +122,7 @@ export default function ApplyCTABannerSection() {
   };
 
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 py-24 md:py-32 overflow-hidden">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 py-24 md:py-32 overflow-hidden">
       <SectionContainer size="xl" noPaddingY>
       <motion.div
         className="max-w-[840px] mx-auto space-y-8"

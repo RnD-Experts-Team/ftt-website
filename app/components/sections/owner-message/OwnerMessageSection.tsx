@@ -62,7 +62,7 @@ export default function OwnerMessageSection() {
   };
 
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 border-t border-b border-slate-200 dark:border-slate-800 overflow-hidden py-16 md:py-20">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900  overflow-hidden py-16 md:py-20 ">
       <SectionContainer size="xl" noPaddingY>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content: Text Block */}
@@ -78,7 +78,7 @@ export default function OwnerMessageSection() {
                 Meet Our Founder
               </span>
             </div>
-            <h2 className="text-slate-900 dark:text-white text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
+            <h2 className="text-slate-900 dark:text-white text-3xl md:text-4xl font-extrabold leading-tight tracking-tight">
               A Message from the Owner: 
             </h2>
             <motion.div 

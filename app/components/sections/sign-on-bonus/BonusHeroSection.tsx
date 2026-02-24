@@ -75,9 +75,9 @@ const listItemVariants = {
 
 export default function BonusHeroSection() {
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-10 md:py-12">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 py-10 md:py-12">
       <SectionContainer size="xl" noPaddingY>
-      <div className="relative overflow-hidden rounded-3xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
+      <div className="relative overflow-hidden rounded-3xl bg-slate-100 dark:bg-slate-800 ">
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
         <motion.div
           className="p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 space-y-4 sm:space-y-5 md:space-y-6"

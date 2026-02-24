@@ -94,7 +94,7 @@ const listItemVariants = {
 
 export default function BenefitsHeroSection() {
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 ">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 ">
       <SectionContainer
         size="xl"
         noPaddingY

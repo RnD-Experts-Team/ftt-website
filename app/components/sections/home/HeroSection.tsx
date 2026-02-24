@@ -59,18 +59,20 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-linear-to-r from-white via-white/80 to-white/50 dark:from-charcoal dark:via-charcoal/70 dark:to-charcoal/40 z-10"></div>
         <div
           className="h-full w-full bg-cover bg-center"
-          style={{
-            backgroundImage:
-              'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAicvgIsSNKrNrYejEr60E7ErkhhC1WgBWnLn97s5meREK8fvqXls-v8coUHvL5t_TjQdsiBKVfJnXd5js7h5MFEiwVKV6jNM1ElHpaelD3UzpIS-15341p8IOjLwc7AM-TGa7bU9Ws4Hs3I1TrjGvP1B_I3HPvANkRQhjtoyrHaUjoxPbaAhvQBmOWYCo_m_H09BaU4jZxKs6fSBYOjt2xnXcGjmeAWNsL8oGYGgmvLvaCncFqKmQLs9UKt7124njkB5Orib7VN0E")',
-          }}
-        ></div>
+        >
+          <img
+            src="/bghero.jpg"
+            alt="Hero Background"
+            className="h-full w-full object-cover object-center opacity-80"
+          />
+        </div>
       </div>
 
       {/* Content Container */}
-      <SectionContainer 
-        size="xl" 
-        noPaddingY 
-        className="relative z-20"
+      <SectionContainer
+        size="xl"
+        noPaddingY
+        className="relative z-20 bg-[#FFFFFF33] dark:bg-[#1A1A1A80] rounded-[25px] backdrop-blur-sm w-full min-w-[340px] max-w-[1300px] lg:w-[935px] lg:h-[611px] pt-[35px] gap-[18px] "
       >
         <motion.div
           className="max-w-4xl"
@@ -89,7 +91,7 @@ export default function HeroSection() {
           {/* Heading */}
           <motion.h1
             variants={itemVariants}
-            className="mb-6 font-brand text-5xl font-black italic leading-[0.95] tracking-tight text-slate-900 dark:text-white md:text-7xl lg:text-8xl uppercase dark:drop-shadow-[0_0_20px_rgba(235,25,32,0.2)]"
+            className="mb-6 font-sragen text-4xl font-bold leading-[110%] tracking-tight text-slate-900 dark:text-white md:text-5xl lg:text-6xl uppercase align-middle dark:drop-shadow-[0_0_20px_rgba(235,25,32,0.2)]"
           >
             Drive with the best:
             <br />
@@ -99,7 +101,7 @@ export default function HeroSection() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="mb-10 max-w-3xl text-base sm:text-lg md:text-xl leading-relaxed text-slate-900 dark:text-slate-300"
+            className="mb-10 max-w-3xl text-base sm:text-lg md:text-xl font-medium leading-[110%] align-middle text-slate-900 dark:text-slate-300"
           >
             <motion.span
               initial={{ opacity: 0, x: -20 }}
@@ -124,9 +126,6 @@ export default function HeroSection() {
               APPLY NOW
               <span className="material-symbols-outlined">trending_flat</span>
             </Link>
-            <button className="flex min-w-40 sm:min-w-50 cursor-pointer items-center justify-center gap-2 rounded-lg border border-slate-900/20 bg-slate-900/5 px-6 py-3 sm:px-7 sm:py-4 md:px-8 md:py-5 text-base sm:text-lg font-bold uppercase tracking-widest text-slate-900 backdrop-blur-sm transition-all hover:bg-slate-900/10 dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:bg-white/10">
-              LEARN MORE
-            </button>
           </motion.div>
 
           

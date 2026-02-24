@@ -87,9 +87,6 @@ export default function Navbar() {
             className="w-14 sm:w-16 hidden dark:block"
           />
 
-          <h2 className="hidden sm:block text-base lg:text-lg font-black uppercase tracking-tighter font-brand italic whitespace-nowrap bg-gradient-to-r from-primary to-slate-900 dark:to-primary/0 bg-clip-text text-transparent">
-            First Team Trucking
-          </h2>
         </motion.a>
 
         {/* Desktop Navigation (ONLY xl+) */}

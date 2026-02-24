@@ -56,7 +56,7 @@ export default function GalleryActionBarSection() {
   };
 
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-12 md:py-16">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 py-12 md:py-16">
       <SectionContainer size="xl" noPaddingY>
       <motion.div
         className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-6 py-8 border-t border-slate-200 dark:border-steel-gray/20"

@@ -69,7 +69,7 @@ export default function CompensationMetricsSection() {
   ];
 
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-10 sm:py-12">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 py-10 sm:py-12">
       <SectionContainer size="xl" noPaddingY className="overflow-x-hidden">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 px-4 sm:px-6 lg:px-8 xl:px-0">
         {metrics.map((metric, index) => (

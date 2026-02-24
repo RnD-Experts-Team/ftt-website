@@ -68,10 +68,10 @@ const badgeVariants = {
 
 export default function BenefitsCTASection() {
   return (
-    <section className="relative w-full bg-[#f8efef] dark:bg-slate-900 py-12 sm:py-16 md:py-20 lg:pt-50">
+    <section className="relative w-full bg-[#E8E8E0] dark:bg-slate-900 py-12 sm:py-16 md:py-20 lg:pt-50">
       <SectionContainer size="xl" noPaddingY>
         <motion.div
-          className="max-w-4xl mx-auto text-center p-4 sm:p-6 lg:p-8 xl:p-20 bg-linear-to-b from-transparent rounded-2xl sm:rounded-3xl to-primary/10"
+          className="max-w-4xl mx-auto text-center p-4 sm:p-6 lg:p-8 xl:p-20 bg-linear-to-b from-transparent rounded-2xl sm:rounded-3xl to-primary/5"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
