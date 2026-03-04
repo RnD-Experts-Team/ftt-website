@@ -8,6 +8,10 @@ import {
   HelpCircleIcon,
   SearchIcon,
   InspectionPanelIcon,
+  CaptionsIcon,
+  CrownIcon,
+  BookOpenCheckIcon,
+  PhoneIcon,
 } from "lucide-react";
 import { NavMain } from "@/app/dashboard/components/nav-main";
 import { NavSecondary } from "@/app/dashboard/components/nav-secondary";
@@ -40,6 +44,31 @@ const data = {
       title: "Site Metadata",
       url: "/dashboard/site-metadata",
       icon: InspectionPanelIcon,
+    },
+    {
+      title: "Hero",
+      url: "/dashboard/hero",
+      icon: CaptionsIcon,
+    },
+    {
+      title: "Owner Message",
+      url: "/dashboard/owner-message",
+      icon: CrownIcon,
+    },
+    {
+      title: "Testimonials",
+      url: "/dashboard/testimonials",
+      icon: BookOpenCheckIcon,
+    },
+    {
+      title: "Contact",
+      url: "/dashboard/cta",
+      icon: PhoneIcon,
+    },
+    {
+      title: "Why FTT",
+      url: "/dashboard/whyftt",
+      icon: ArrowUpCircleIcon,
     },
   ],
   navSecondary: [

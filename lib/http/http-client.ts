@@ -21,6 +21,9 @@ export class HttpClient {
     this.client = axios.create({
       baseURL: opts.baseUrl,
       timeout: opts.timeoutMs ?? 3000000,
+      headers: {
+        Accept: "application/json",
+      },
     });
 
     // Attach Bearer token automatically
@@ -31,6 +34,15 @@ export class HttpClient {
       if (token && !isLogin) {
         config.headers = config.headers ?? {};
         config.headers.Authorization = `Bearer ${token}`;
+      }
+
+      // For FormData requests, don't set Content-Type header
+      // Let axios/browser handle it automatically with proper boundary
+      if (config.data instanceof FormData) {
+        // Remove Content-Type if it exists to let axios handle it
+        if (config.headers["Content-Type"]) {
+          delete config.headers["Content-Type"];
+        }
       }
 
       return config;
@@ -57,9 +69,19 @@ export class HttpClient {
   private async request<T>(
     config: AxiosRequestConfig
   ): Promise<T> {
-    const res: AxiosResponse<T> =
-      await this.client.request<T>(config);
+    // log method/url for easier debugging when requests fail
+    try {
+      // eslint-disable-next-line no-console
+      console.debug("HTTP ->", config.method?.toString().toUpperCase(), config.url);
+    } catch {}
+
+    const res: AxiosResponse<T> = await this.client.request<T>(config);
     return res.data;
+  }
+
+  // Expose a raw request method for cases where precise control is needed
+  requestRaw<T>(config: AxiosRequestConfig): Promise<T> {
+    return this.request<T>(config);
   }
 
   login<T = any>(payload: {
@@ -104,17 +126,17 @@ export class HttpClient {
   }
 
   put<T>(
-  path: string,
-  payload?: unknown,
-  config?: AxiosRequestConfig
-) {
-  return this.request<T>({
-    ...config,
-    url: path,
-    method: "POST", // ✅ USE POST
-    data: payload,
-  });
-}
+    path: string,
+    payload?: unknown,
+    config?: AxiosRequestConfig
+  ) {
+    return this.request<T>({
+      ...config,
+      url: path,
+      method: "POST",
+      data: payload,
+    });
+  }
 
   delete<T>(path: string, config?: AxiosRequestConfig) {
     return this.request<T>({

@@ -12,23 +12,16 @@ type AuthState = {
   isAuthenticated: boolean;
   login: (token: string, user: User) => void;
   logout: () => void;
+  hydrate: () => void;
 };
 
-export const useAuthStore = create<AuthState>((set) => {
-  let token: string | null = null;
-  let user: User | null = null;
-
-  if (typeof window !== "undefined") {
-    token = localStorage.getItem("cms_token");
-
-    const rawUser = localStorage.getItem("cms_user");
-    user = rawUser ? JSON.parse(rawUser) : null;
-  }
-
+export const useAuthStore = create<AuthState>((set, get) => {
+  // Always start with null on both server and client to avoid hydration mismatch.
+  // The actual localStorage values are loaded in the hydrate() call below.
   return {
-    token,
-    user,
-    isAuthenticated: !!token,
+    token: null,
+    user: null,
+    isAuthenticated: false,
 
     login: (token, user) => {
       localStorage.setItem("cms_token", token);
@@ -51,5 +44,18 @@ export const useAuthStore = create<AuthState>((set) => {
         isAuthenticated: false,
       });
     },
+
+    hydrate: () => {
+      if (typeof window === "undefined") return;
+      const token = localStorage.getItem("cms_token");
+      const rawUser = localStorage.getItem("cms_user");
+      const user = rawUser ? JSON.parse(rawUser) : null;
+      set({ token, user, isAuthenticated: !!token });
+    },
   };
 });
+
+// Hydrate the store on the client once the module loads
+if (typeof window !== "undefined") {
+  useAuthStore.getState().hydrate();
+}

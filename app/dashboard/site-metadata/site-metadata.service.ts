@@ -3,7 +3,7 @@ import { SiteMetadataResponse, SiteMetadataUpdateResponse } from "./site-metadat
 import { getAuthToken } from "@/lib/http/auth";
 
 const http = new HttpClient({
-  baseUrl: process.env.NEXT_PUBLIC_API_URL!,
+  baseUrl: process.env.NEXT_PUBLIC_API_URL || "/api",
   getToken: getAuthToken,
 });
 export const SiteMetadataService = {

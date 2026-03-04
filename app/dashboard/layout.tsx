@@ -1,7 +1,7 @@
 "use client";
 
 import "./dashboard.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AppSidebar } from "./components/app-sidebar";
 import { SiteHeader } from "./components/site-header";
@@ -15,20 +15,30 @@ export default function DashboardLayout({
 }>) {
   const router = useRouter();
   const { isAuthenticated } = useAuthStore();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     // Check if user has a token in localStorage
     const token = localStorage.getItem("cms_token");
     if (!token && !isAuthenticated) {
       // Redirect to login if no token
       router.replace("/login");
     }
-  }, [isAuthenticated, router]);
+  }, [mounted, isAuthenticated, router]);
 
-  // Show loading state or empty while checking auth
-  const token = typeof window !== "undefined" ? localStorage.getItem("cms_token") : null;
+  // Always return null until client mount to avoid SSR/CSR hydration mismatch
+  if (!mounted) {
+    return null;
+  }
+
+  const token = localStorage.getItem("cms_token");
   if (!token && !isAuthenticated) {
-    return null; // Or a loading spinner
+    return null;
   }
 
   return (

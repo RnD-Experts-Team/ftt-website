@@ -1,11 +1,24 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "cms.1ftt.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cms.1ftt.com",
+      },
+    ],
+  },
   async rewrites() {
     return [
       {
-        source: "/api/login",
-        destination: "http://cms.1ftt.com/api/login",
+        // Proxy ALL CMS API calls through Next.js to avoid CORS
+        source: "/api/:path*",
+        destination: "http://cms.1ftt.com/api/:path*",
       },
     ];
   },
