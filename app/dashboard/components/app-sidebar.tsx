@@ -12,6 +12,10 @@ import {
   CrownIcon,
   BookOpenCheckIcon,
   PhoneIcon,
+  SproutIcon,
+  ListOrderedIcon,
+  Images,
+  FootprintsIcon,
 } from "lucide-react";
 import { NavMain } from "@/app/dashboard/components/nav-main";
 import { NavSecondary } from "@/app/dashboard/components/nav-secondary";
@@ -70,6 +74,36 @@ const data = {
       url: "/dashboard/whyftt",
       icon: ArrowUpCircleIcon,
     },
+    {
+      title: "Sign-On Bonus",
+      url: "/dashboard/sign-on-bonus",
+      icon: FileIcon,
+    },
+    {
+      title: "Pay & Growth",
+      url: "/dashboard/pay-growth",
+      icon: SproutIcon,
+    },
+    {
+      title: "Benefits",
+      url: "/dashboard/benefits",
+      icon: ArrowUpCircleIcon,
+    },
+    {
+      title: "Requirement",
+      url: "/dashboard/requirements",
+      icon: ListOrderedIcon,
+    },
+    {
+      title: "Gallery",
+      url: "/dashboard/gallery",
+      icon: Images,
+    },
+    {
+      title: "Footer",
+      url: "/dashboard/footer",
+      icon: FootprintsIcon,
+    },
   ],
   navSecondary: [
     {
@@ -87,7 +121,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
+            <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:p-1.5!">
               <a href="#">
                 <Image src="/FTT-Logo.png" alt="Ftt-CMS Logo" width={40} height={40} />
                 <span className="text-base font-semibold">Ftt-CMS</span>

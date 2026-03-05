@@ -36,13 +36,13 @@ export class HttpClient {
         config.headers.Authorization = `Bearer ${token}`;
       }
 
-      // For FormData requests, don't set Content-Type header
-      // Let axios/browser handle it automatically with proper boundary
+      // For FormData requests, remove Content-Type so axios sets it
+      // automatically with the correct multipart/form-data boundary.
+      // For all other (JSON) requests, set Content-Type explicitly.
       if (config.data instanceof FormData) {
-        // Remove Content-Type if it exists to let axios handle it
-        if (config.headers["Content-Type"]) {
-          delete config.headers["Content-Type"];
-        }
+        delete config.headers["Content-Type"];
+      } else {
+        config.headers["Content-Type"] = "application/json";
       }
 
       return config;
