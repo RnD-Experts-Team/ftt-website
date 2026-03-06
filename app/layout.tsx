@@ -3,6 +3,7 @@ import { Inter, Barlow_Condensed } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./providers";
+import { fetchHomeData } from "@/lib/services/home.service";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,10 +33,16 @@ const sragen = localFont({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "First Team Trucking",
-  description: "First Team Trucking - Join Our Team",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await fetchHomeData();
+  return {
+    title: data?.site_metadata?.name ?? "First Team Trucking",
+    description: data?.site_metadata?.description ?? "First Team Trucking - Join Our Team",
+    icons: {
+      icon: data?.site_metadata?.favicon ?? "/favicon.ico",
+    },
+  };
+}
 
 export default function RootLayout({
   children,

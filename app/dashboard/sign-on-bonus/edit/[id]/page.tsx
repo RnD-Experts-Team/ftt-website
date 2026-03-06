@@ -89,7 +89,7 @@ export default function EditRequirementPage() {
       const res = await signOnBonusService.updateOfferRequirement(id, formData);
       if (res.success) {
         setSuccess("Requirement updated successfully!");
-        setTimeout(() => router.push("/dashboard/benefits"), 1500);
+        setTimeout(() => router.push("/dashboard/sign-on-bonus"), 1500);
       }
     } catch (err) {
       setError(

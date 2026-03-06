@@ -63,7 +63,7 @@ function CreateRequirementForm() {
       const res = await signOnBonusService.createOfferRequirement(formData);
       if (res.success) {
         setSuccess("Requirement created successfully!");
-        setTimeout(() => router.push("/dashboard/benefits"), 1500);
+        setTimeout(() => router.push("/dashboard/sign-on-bonus"), 1500);
       }
     } catch (err) {
       setError(
