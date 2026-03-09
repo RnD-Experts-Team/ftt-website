@@ -73,11 +73,6 @@ const listItemVariants = {
 
 const defaultItems = [
   { text: "" },
-  { text: "" },
-  { text: "" },
-  { text: "" },
-  { text: "" },
-  { text: "" },
 ];
 
 const animDelay = (i: number) => 0.2 + i * 0.1;

@@ -97,14 +97,11 @@ export default function BenefitsHeroSection({ data }: { data?: HomeBenefitsSecti
   const items = data?.items && data.items.length > 0
     ? data.items
     : [
-        { text: "Weekly pay with same-day pay options" },
-        { text: "Health, dental, vision & life insurance" },
-        { text: "Paid orientation & paid training" },
-        { text: "Paid virtual orientation & intermodal training" },
-        { text: "Paid time off (1 hour for every 25 hours worked)" },
-        { text: "Safety & performance bonuses" },
-        { text: "Driver referral program" },
-        { text: "Childcare Assistance" },
+        { text: "" },
+        { text: "" },
+        { text: "" },
+        { text: "" },
+        { text: "" },
       ];
   const animDelay = (i: number) => 0.2 + i * 0.08;
   return (

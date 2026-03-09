@@ -64,16 +64,7 @@ const iconVariants = {
 export default function WhyFTTHeroSection({ data }: { data?: HomeWhyUsSection }) {
   const features = data?.items && data.items.length > 0
     ? data.items
-    : [
-        { icon: "payments", name: "Performance-based pay, earn more by driving safely and smartly" },
-        { icon: "local_shipping", name: "New Amazon-branded equipment" },
-        { icon: "package", name: "100% no-touch freight" },
-        { icon: "route", name: "Dedicated lanes and consistent schedules" },
-        { icon: "support_agent", name: "Supportive coaching during onboarding and beyond" },
-        { icon: "diversity_3", name: "Equal opportunity employer committed to inclusion" },
-        { icon: "home", name: "Be home every other day on single-shift schedules" },
-        { icon: "payments", name: "Probation Period & Sign-On Bonus" },
-      ];
+    : [];
 
   return (
     <section className="relative w-full overflow-hidden bg-[#E8E8E0] dark:bg-slate-900  mt-5">

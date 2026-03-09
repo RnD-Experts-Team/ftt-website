@@ -125,6 +125,7 @@ export interface UpdateGalleryItemPayload {
   title?: string;
   description?: string;
   image?: File;
+  image_media_id?: number;
   alt_text?: string;
   image_title?: string;
   sort_order?: number;

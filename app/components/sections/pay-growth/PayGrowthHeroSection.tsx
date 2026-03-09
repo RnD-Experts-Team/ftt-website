@@ -90,11 +90,7 @@ const listItemVariants: Variants = {
 /* ------------------ Component ------------------ */
 
 export default function PayGrowthHeroSection({ data }: { data?: HomeTemptationSection }) {
-  const requirements = data?.requirements ?? [
-    { text: "" },
-    { text: "" },
-    { text: "" },
-  ];
+  const requirements = data?.requirements ?? [  ];
   const imageUrl = data?.image ;
   const paragraphs = data?.description
     
@@ -119,7 +115,7 @@ export default function PayGrowthHeroSection({ data }: { data?: HomeTemptationSe
             variants={badgeVariants}
             className="inline-block px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-widest mb-4"
           >
-            {data?.hook ?? "Amazon Freight Partner"}
+            {data?.hook }
           </motion.span>
 
           <motion.div variants={itemVariants}>

@@ -135,7 +135,7 @@ export default function ApplyCTABannerSection({ cta }: { cta?: HomeCTA }) {
       >
         <div className="text-slate-900 dark:text-white text-4xl md:text-6xl font-black leading-tight tracking-[-0.033em] uppercase">
           <motion.div variants={titleLineVariants}>
-            {cta?.title ?? "Ready to Drive Your"}
+            {cta?.title }
           </motion.div>
           {!cta?.title && (
             <motion.span 
@@ -152,26 +152,7 @@ export default function ApplyCTABannerSection({ cta }: { cta?: HomeCTA }) {
           className="text-slate-600 dark:text-slate-400 text-start sm:text-lg md:text-xl font-medium max-w-[650px]  leading-relaxed"
           variants={textVariants}
         >
-          {cta?.description ?? (
-            <>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                Ready to join a winning team and drive with purpose?
-              </motion.span>{' '}
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.75 }}
-              >
-                Start your next chapter with a company built for long-term growth, and a career you can be proud of.
-              </motion.span>
-            </>
-          )}
+          {cta?.description }
         </motion.p>
         
         <motion.div 
@@ -193,7 +174,7 @@ export default function ApplyCTABannerSection({ cta }: { cta?: HomeCTA }) {
               whileHover={{ x: [0, -5, 5, 0] }}
               transition={{ duration: 0.4 }}
             >
-              {cta?.button1_text ?? "Apply Now Today"}
+              {cta?.button1_text }
             </motion.span>
           </motion.button>
         </motion.div>

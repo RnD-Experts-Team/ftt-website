@@ -49,14 +49,10 @@ export default function OwnerMessageSection({ data }: { data?: HomeFounderSectio
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const videoPlayerRef = useRef<VideoPlayerRef>(null);
 
-  const videoSrc = data?.video?.url ?? "/Shawn.mp4";
+  const videoSrc = data?.video?.url ;
   const paragraphs = data?.description
     ? data.description.split(/\r?\n\r?\n/).filter(Boolean)
-    : [
-        "At First Team Trucking, we believe drivers deserve more than just a paycheck, they deserve respect, opportunity, and a clear path to grow.",
-        "Our pay structure is built to reward your performance with predictable, consistent earnings. You'll haul Amazon freight on set lanes, meaning no guesswork and no surprises.",
-        "Whether you're new to Amazon lanes or an experienced CDL Class A driver, our team is committed to giving you the tools, training, and support you need to succeed. If you're willing to show up, stay safe, and take pride in your work, there's a place for you here.",
-      ];
+    : [ ];
 
   const handleScrollToVideo = () => {
     // Scroll to video

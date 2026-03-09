@@ -37,6 +37,10 @@ export const GalleryService = {
     return http.get<GalleryItemListResponse>("/gallery-items/");
   },
 
+  getGalleryItemById: (id: number): Promise<GalleryItemSingleResponse> => {
+    return http.get<GalleryItemSingleResponse>(`/gallery-items/${id}`);
+  },
+
   createGalleryItem: (
     payload: CreateGalleryItemPayload
   ): Promise<GalleryItemSingleResponse> => {

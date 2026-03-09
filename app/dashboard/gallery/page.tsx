@@ -432,7 +432,7 @@ export default function GalleryPage() {
                               className="h-8 w-8 opacity-60 transition-opacity group-hover:opacity-100"
                               onClick={() =>
                                 router.push(
-                                  `/dashboard/gallery/edit/${item.id}?title=${encodeURIComponent(item.title)}&description=${encodeURIComponent(item.description)}&sort_order=${item.sort_order}&sectionId=${item.gallery_section_id}&alt_text=${encodeURIComponent(item.image?.alt_text ?? "")}&image_title=${encodeURIComponent(item.image?.title ?? "")}&imageUrl=${encodeURIComponent(item.image?.url ?? "")}`
+                                  `/dashboard/gallery/edit/${item.id}?title=${encodeURIComponent(item.title)}&description=${encodeURIComponent(item.description)}&sort_order=${item.sort_order}&sectionId=${item.gallery_section_id}&alt_text=${encodeURIComponent(item.image?.alt_text ?? "")}&image_title=${encodeURIComponent(item.image?.title ?? "")}&imageUrl=${encodeURIComponent(item.image?.url ?? "")}&image_media_id=${item.image_media_id ?? ""}`
                                 )
                               }
                               title="Edit"

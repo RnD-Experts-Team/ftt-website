@@ -42,11 +42,7 @@ export default function TestimonialsCarouselSection({ data }: { data?: HomeTesti
         name: t.name,
         role: t.position,
       }))
-    : [
-        { video: "/Shawn.mp4", quote: "First Team feels like family", name: "John D.", role: "Over-the-Road Driver, 1 Years" },
-        { video: "/Shawn.mp4", quote: "First Team feels like family", name: "John D.", role: "Over-the-Road Driver, 2 Years" },
-        { video: "/Shawn.mp4", quote: "First Team feels like family", name: "John D.", role: "Over-the-Road Driver, 3 Years" },
-      ];
+    : [ ];
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {

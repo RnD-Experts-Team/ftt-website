@@ -78,17 +78,11 @@ export default function BonusHeroSection({ data }: { data?: HomeOfferSection }) 
   const bgImage = data?.image ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuBcUJnM-bxeszpCVoXzhFixfrT3XIh2eyuudIJt2mDZY7OhzGIv0qlzVz57CcEoh_tiLP4e2bnZ6qpSEFBbT-rifRgFmbWIvcl_Ujl-hbkHFYnBT9Wl8C2Y9m7lfhYJ4mGY3CmxajDcYW-b8VPP9Yskfh9t7tKffTdABZqASN_ol59cW_lXgp_NG0m9RmKH8snzZJt7I1BN-Qr4fBlFdwuvFje8eLFDsj2haebzdmXMzdUgamMRYX9s_y9_TI37RXhXLAUP-hJ3AQE";
   const paragraphs = data?.description
     ? data.description.split(/\r?\n\r?\n/).filter(Boolean)
-    : [
-        "New drivers go through a coaching and probation period designed to help you succeed. The length depends on experience and performance.",
-        "Upon successful completion, drivers are eligible for a sign-on bonus, based on:",
-      ];
+    : [ ];
   const requirements = data?.requirements ?? [
-    { text: "Willingness to learn" },
-    { text: "On-time performance" },
-    { text: "Commitment to safety and reliability" },
   ];
-  const buttonText = data?.button_text ?? "APPLY NOW";
-  const buttonLink = data?.button_link ?? "/apply-now";
+  const buttonText = data?.button_text ?? " ";
+  const buttonLink = data?.button_link ?? "";
 
   return (
     <section className="relative w-full overflow-hidden bg-[#E8E8E0] dark:bg-slate-900 py-10 md:py-12">

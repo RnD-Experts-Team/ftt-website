@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Separator } from "@/app/dashboard/components/ui/separator"
@@ -64,18 +65,18 @@ export function SiteHeader() {
             {crumbs.map((crumb, i) => {
               const isLast = i === crumbs.length - 1
               return (
-                <BreadcrumbItem key={crumb.href}>
-                  {isLast ? (
-                    <BreadcrumbPage>{crumb.label}</BreadcrumbPage>
-                  ) : (
-                    <>
+                <React.Fragment key={crumb.href}>
+                  <BreadcrumbItem>
+                    {isLast ? (
+                      <BreadcrumbPage>{crumb.label}</BreadcrumbPage>
+                    ) : (
                       <BreadcrumbLink asChild>
                         <Link href={crumb.href}>{crumb.label}</Link>
                       </BreadcrumbLink>
-                      <BreadcrumbSeparator />
-                    </>
-                  )}
-                </BreadcrumbItem>
+                    )}
+                  </BreadcrumbItem>
+                  {!isLast && <BreadcrumbSeparator />}
+                </React.Fragment>
               )
             })}
           </BreadcrumbList>

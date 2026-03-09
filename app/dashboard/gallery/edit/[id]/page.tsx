@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef, useState, Suspense } from "react";
+import { useRef, useState, useEffect, Suspense } from "react";
 import { useRouter, useParams, useSearchParams } from "next/navigation";
-import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -35,7 +34,9 @@ function EditGalleryItemForm() {
   const id = parseInt(params.id);
   const isInvalid = isNaN(id);
 
-  const existingImageUrl = searchParams.get("imageUrl") ?? "";
+  const [currentImageUrl, setCurrentImageUrl] = useState<string>(
+    searchParams.get("imageUrl") ?? ""
+  );
 
   const [formData, setFormData] = useState({
     title: searchParams.get("title") ?? "",
@@ -46,11 +47,46 @@ function EditGalleryItemForm() {
     sectionId: parseInt(searchParams.get("sectionId") ?? "1") || 1,
   });
 
+  const [imageMediaId, setImageMediaId] = useState<number | null>(
+    parseInt(searchParams.get("image_media_id") ?? "") || null
+  );
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(
-    existingImageUrl || null
+    searchParams.get("imageUrl") || null
   );
   const [replaceImage, setReplaceImage] = useState(false);
+
+  // Fetch item from API on mount to reliably populate form and image preview
+  useEffect(() => {
+    if (isInvalid) return;
+    GalleryService.getGalleryItemById(id)
+      .then((res) => {
+        if (res.success && res.data) {
+          const item = res.data;
+          setFormData({
+            title: item.title,
+            description: item.description,
+            alt_text: item.image?.alt_text ?? "",
+            image_title: item.image?.title ?? "",
+            sort_order: item.sort_order,
+            sectionId: item.gallery_section_id,
+
+          });
+          if (item.image?.url) {
+            setImagePreview(item.image.url);
+            setCurrentImageUrl(item.image.url);
+          }
+          if (item.image_media_id) {
+            setImageMediaId(item.image_media_id);
+          }
+
+        }
+      })
+      .catch(() => {
+        // API failed — keep searchParams-sourced values as fallback
+      });
+  }, [id]);
+
   const imageInputRef = useRef<HTMLInputElement>(null);
 
   const [isSaving, setIsSaving] = useState(false);
@@ -76,7 +112,7 @@ function EditGalleryItemForm() {
 
   const handleRemoveNewImage = () => {
     setImageFile(null);
-    setImagePreview(existingImageUrl || null);
+    setImagePreview(currentImageUrl || null);
     setReplaceImage(false);
     if (imageInputRef.current) imageInputRef.current.value = "";
   };
@@ -106,7 +142,12 @@ function EditGalleryItemForm() {
         image_title: formData.image_title,
         sort_order: formData.sort_order,
       };
-      if (imageFile) payload.image = imageFile;
+
+      if (imageFile) {
+        payload.image = imageFile;
+      } else if (imageMediaId) {
+        payload.image_media_id = imageMediaId;
+      }
 
       const res = await GalleryService.updateGalleryItem(id, payload);
       if (res.success) {
@@ -114,7 +155,15 @@ function EditGalleryItemForm() {
         setTimeout(() => router.push("/dashboard/gallery"), 1500);
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to update gallery item");
+      if (err instanceof Error && "details" in err) {
+        const details = (err as { details?: { message?: string; errors?: Record<string, string[]> } }).details;
+        const fieldErrors = details?.errors
+          ? Object.values(details.errors).flat().join(" ")
+          : null;
+        setError(fieldErrors || details?.message || err.message);
+      } else {
+        setError(err instanceof Error ? err.message : "Failed to update gallery item");
+      }
     } finally {
       setIsSaving(false);
     }
@@ -177,7 +226,7 @@ function EditGalleryItemForm() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label className="text-sm font-medium">Image</Label>
-                {!replaceImage && existingImageUrl && (
+                {!replaceImage && currentImageUrl && (
                   <Button
                     type="button"
                     variant="outline"
@@ -196,14 +245,13 @@ function EditGalleryItemForm() {
 
               {/* Show existing image or new upload */}
               {imagePreview && !replaceImage ? (
-                <div className="relative w-full overflow-hidden rounded-lg border bg-muted">
-                  <div className="relative h-56 w-full">
-                    <Image
+                <div className="w-full overflow-hidden rounded-lg border bg-muted">
+                  <div className="h-56 w-full">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
                       src={imagePreview}
                       alt="Current image"
-                      fill
-                      className="object-contain"
-                      sizes="100vw"
+                      className="h-full w-full object-cover"
                     />
                   </div>
                   {imageFile && (
@@ -249,7 +297,7 @@ function EditGalleryItemForm() {
                       className="h-7 gap-1.5 text-xs text-muted-foreground"
                       onClick={() => {
                         setReplaceImage(false);
-                        setImagePreview(existingImageUrl || null);
+                        setImagePreview(currentImageUrl || null);
                         setImageFile(null);
                         if (imageInputRef.current) imageInputRef.current.value = "";
                       }}

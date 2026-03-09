@@ -55,13 +55,10 @@ const statItemVariants = {
 };
 
 export default function HeroSection({ data }: Props) {
-  const bgImage = data?.media?.[0]?.url ?? "/bghero.jpg";
+  const bgImage = data?.media?.[0]?.url ;
   const paragraphs = data?.description_html
     ? data.description_html.split(/\r?\n\r?\n/).filter(Boolean)
-    : [
-        "First Team Trucking is a trusted Amazon Freight Partner operating dedicated regional lanes out of Indianapolis, Indiana. We specialize in safe, reliable, and professional CDL Class A transportation using Amazon-branded equipment.",
-        "Whether you're an experienced driver or just starting your career, we focus on performance, safety, and growth, not just seniority. At First Team Trucking, every driver has a real opportunity to succeed.",
-      ];
+    : [ ];
   return (
     <main className="relative flex min-h-screen w-full items-center pt-30 pb-10">
       {/* Background Image Container */}

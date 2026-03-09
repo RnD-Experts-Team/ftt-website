@@ -82,13 +82,13 @@ export default function BenefitsCTASection({ cta }: { cta?: HomeCTA }) {
             className="text-slate-900 dark:text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 sm:mb-4 md:mb-6"
             variants={itemVariants}
           >
-            {cta?.title ?? "Ready to Join the First Team?"}
+            {cta?.title }
           </motion.h2>
           <motion.p
             className="text-slate-600 dark:text-slate-400 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 md:mb-10"
             variants={itemVariants}
           >
-            {cta?.description ?? "Applications take less than 10 minutes. Our recruitment team will review your profile and reach out within 24-48 hours."}
+            {cta?.description }
           </motion.p>
           <motion.div
             className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
@@ -104,7 +104,7 @@ export default function BenefitsCTASection({ cta }: { cta?: HomeCTA }) {
                 href={cta?.button1_link ?? "/apply-now"}
                 className="flex items-center justify-center gap-2"
               >
-                {cta?.button1_text ?? "APPLY NOW"}
+                {cta?.button1_text }
                 <span className="material-symbols-outlined">trending_flat</span>
               </Link>
             </motion.button>
@@ -117,7 +117,7 @@ export default function BenefitsCTASection({ cta }: { cta?: HomeCTA }) {
               <span className="material-symbols-outlined text-lg sm:text-xl">
                 call
               </span>
-              {cta?.button2_text ?? "Call Recruitment"}
+              {cta?.button2_text }
             </motion.button>
           </motion.div>
           <motion.div
