@@ -25,6 +25,7 @@ import {
   Save,
   UploadCloud,
   X,
+  RotateCcw,
 } from "lucide-react";
 
 function EditGalleryItemForm() {
@@ -54,7 +55,6 @@ function EditGalleryItemForm() {
   const [imagePreview, setImagePreview] = useState<string | null>(
     searchParams.get("imageUrl") || null
   );
-  const [replaceImage, setReplaceImage] = useState(false);
 
   // Fetch item from API on mount to reliably populate form and image preview
   useEffect(() => {
@@ -76,8 +76,9 @@ function EditGalleryItemForm() {
             setImagePreview(item.image.url);
             setCurrentImageUrl(item.image.url);
           }
-          if (item.image_media_id) {
-            setImageMediaId(item.image_media_id);
+          const mediaId = item.image_media_id || item.image?.id;
+          if (mediaId) {
+            setImageMediaId(mediaId);
           }
 
         }
@@ -113,7 +114,6 @@ function EditGalleryItemForm() {
   const handleRemoveNewImage = () => {
     setImageFile(null);
     setImagePreview(currentImageUrl || null);
-    setReplaceImage(false);
     if (imageInputRef.current) imageInputRef.current.value = "";
   };
 
@@ -142,18 +142,25 @@ function EditGalleryItemForm() {
         image_title: formData.image_title,
         sort_order: formData.sort_order,
       };
-
       if (imageFile) {
         payload.image = imageFile;
+      } else if (currentImageUrl) {
+        // Re-fetch the existing image so the backend's required image field is satisfied
+        const response = await fetch(currentImageUrl);
+        const blob = await response.blob();
+        const filename = currentImageUrl.split('/').pop()?.split('?')[0] || 'image.jpg';
+        payload.image = new File([blob], filename, { type: blob.type || 'image/jpeg' });
       } else if (imageMediaId) {
         payload.image_media_id = imageMediaId;
       }
+      
 
       const res = await GalleryService.updateGalleryItem(id, payload);
       if (res.success) {
         setSuccess("Gallery item updated successfully!");
         setTimeout(() => router.push("/dashboard/gallery"), 1500);
       }
+      console.log( payload);
     } catch (err) {
       if (err instanceof Error && "details" in err) {
         const details = (err as { details?: { message?: string; errors?: Record<string, string[]> } }).details;
@@ -167,6 +174,7 @@ function EditGalleryItemForm() {
     } finally {
       setIsSaving(false);
     }
+    
   };
 
   return (
@@ -222,49 +230,71 @@ function EditGalleryItemForm() {
           </CardHeader>
           <CardContent className="space-y-5">
 
-            {/* Current / New Image */}
+            {/* Image Upload — always shows preview, click anywhere to replace */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label className="text-sm font-medium">Image</Label>
-                {!replaceImage && currentImageUrl && (
-                  <Button
+                {imageFile && currentImageUrl && (
+                  <button
                     type="button"
-                    variant="outline"
-                    size="sm"
-                    className="h-7 gap-1.5 text-xs"
-                    onClick={() => {
-                      setReplaceImage(true);
-                      setImagePreview(null);
-                    }}
+                    onClick={handleRemoveNewImage}
+                    className="flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
                   >
-                    <UploadCloud className="h-3.5 w-3.5" />
-                    Replace image
-                  </Button>
+                    <RotateCcw className="h-3 w-3" />
+                    Revert to original
+                  </button>
                 )}
               </div>
 
-              {/* Show existing image or new upload */}
-              {imagePreview && !replaceImage ? (
-                <div className="w-full overflow-hidden rounded-lg border bg-muted">
-                  <div className="h-56 w-full">
+              {imagePreview ? (
+                <div
+                  role="button"
+                  tabIndex={isInvalid ? -1 : 0}
+                  aria-label="Click to replace image"
+                  onClick={() => !isInvalid && imageInputRef.current?.click()}
+                  onKeyDown={(e) => {
+                    if (!isInvalid && (e.key === "Enter" || e.key === " ")) {
+                      e.preventDefault();
+                      imageInputRef.current?.click();
+                    }
+                  }}
+                  className="group relative w-full overflow-hidden rounded-lg border bg-muted cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <div className="relative h-56 w-full">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={imagePreview}
-                      alt="Current image"
-                      className="h-full w-full object-cover"
+                      alt="Image preview"
+                      className="h-full w-full object-cover transition-[filter] duration-200 group-hover:brightness-75"
                     />
+                    {/* Hover overlay */}
+                    <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 shadow-md">
+                        <UploadCloud className="h-5 w-5 text-gray-700" />
+                      </div>
+                      <p className="text-sm font-semibold text-white drop-shadow-sm">
+                        Click to replace image
+                      </p>
+                    </div>
                   </div>
+
+                  {/* Footer bar — only shown when a new file is staged */}
                   {imageFile && (
                     <div className="flex items-center justify-between border-t bg-background/80 px-3 py-2 backdrop-blur-xs">
-                      <span className="truncate text-xs text-muted-foreground">
-                        {imageFile.name}
-                      </span>
+                      <div className="flex min-w-0 items-center gap-2">
+                        <span className="inline-flex shrink-0 items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                          New
+                        </span>
+                        <span className="truncate text-xs text-muted-foreground">
+                          {imageFile.name}
+                        </span>
+                      </div>
                       <Button
                         type="button"
                         variant="ghost"
                         size="icon"
                         className="h-6 w-6 shrink-0 text-destructive hover:bg-destructive/10 hover:text-destructive"
-                        onClick={handleRemoveNewImage}
+                        onClick={(e) => { e.stopPropagation(); handleRemoveNewImage(); }}
                       >
                         <X className="h-3.5 w-3.5" />
                       </Button>
@@ -272,41 +302,22 @@ function EditGalleryItemForm() {
                   )}
                 </div>
               ) : (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => imageInputRef.current?.click()}
-                    className="flex w-full cursor-pointer flex-col items-center gap-3 rounded-lg border-2 border-dashed border-muted-foreground/25 px-6 py-10 transition-colors hover:border-primary/50 hover:bg-primary/5"
-                    disabled={isInvalid}
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
-                      <UploadCloud className="h-5 w-5 text-muted-foreground" />
-                    </div>
-                    <div className="text-center">
-                      <p className="text-sm font-medium">Click to upload new image</p>
-                      <p className="mt-0.5 text-xs text-muted-foreground">
-                        PNG, JPG, WEBP up to 10 MB
-                      </p>
-                    </div>
-                  </button>
-                  {replaceImage && (
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="sm"
-                      className="h-7 gap-1.5 text-xs text-muted-foreground"
-                      onClick={() => {
-                        setReplaceImage(false);
-                        setImagePreview(currentImageUrl || null);
-                        setImageFile(null);
-                        if (imageInputRef.current) imageInputRef.current.value = "";
-                      }}
-                    >
-                      <X className="h-3.5 w-3.5" />
-                      Keep existing image
-                    </Button>
-                  )}
-                </>
+                <button
+                  type="button"
+                  onClick={() => imageInputRef.current?.click()}
+                  className="flex w-full cursor-pointer flex-col items-center gap-3 rounded-lg border-2 border-dashed border-muted-foreground/25 px-6 py-10 transition-colors hover:border-primary/50 hover:bg-primary/5"
+                  disabled={isInvalid}
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
+                    <UploadCloud className="h-5 w-5 text-muted-foreground" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-sm font-medium">Click to upload image</p>
+                    <p className="mt-0.5 text-xs text-muted-foreground">
+                      PNG, JPG, WEBP up to 10 MB
+                    </p>
+                  </div>
+                </button>
               )}
 
               <input
