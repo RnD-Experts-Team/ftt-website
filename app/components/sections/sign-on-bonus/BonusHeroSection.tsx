@@ -165,6 +165,7 @@ export default function BonusHeroSection({ data }: { data?: HomeOfferSection }) 
             backgroundImage: `url('${bgImage}')`,
           }}
         >
+          {/*  */}
           <div className="absolute inset-0 bg-linear-to-r from-slate-100 dark:from-slate-800 via-transparent to-transparent lg:block hidden"></div>
           <div className="absolute inset-0 bg-linear-to-t from-slate-100 dark:from-slate-800 via-transparent to-transparent lg:hidden"></div>
         </motion.div>
