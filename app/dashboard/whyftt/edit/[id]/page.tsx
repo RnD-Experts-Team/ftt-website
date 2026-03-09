@@ -134,7 +134,7 @@ export default function EditWhyUsItemPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/10 p-4 md:p-8">
-      <div className="max-w-2xl space-y-6">
+      <div className="max-w-full space-y-6">
 
         {/* Header */}
         <div className="flex items-center gap-4">

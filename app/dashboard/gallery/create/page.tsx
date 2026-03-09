@@ -286,7 +286,7 @@ function CreateGalleryItemForm() {
                 {/* Alt Text */}
                 <div className="space-y-2">
                   <Label htmlFor="alt_text" className="text-sm font-medium">
-                    Alt Text
+                    Alt Text<span className="text-red-500">*</span>
                   </Label>
                   <Input
                     id="alt_text"
@@ -304,7 +304,7 @@ function CreateGalleryItemForm() {
                 {/* Image Title */}
                 <div className="space-y-2">
                   <Label htmlFor="image_title" className="text-sm font-medium">
-                    Image Title
+                    Image Title <span className="text-red-500">*</span>
                   </Label>
                   <Input
                     id="image_title"
