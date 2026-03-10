@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Login — First Team Trucking",
   description: "Sign in to your First Team Trucking dashboard",
 }
-
+// 
 type LoginPageProps = {
   searchParams: Promise<{ next?: string }>
 }
