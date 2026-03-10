@@ -417,7 +417,7 @@ export default function PayGrowthPage() {
                   <p className="text-xs text-muted-foreground">
                     JPG, PNG or WebP. Recommended: 800×600 px.
                   </p>
-                  <input
+                  <input 
                     ref={imageInputRef}
                     type="file"
                     accept="image/*"
