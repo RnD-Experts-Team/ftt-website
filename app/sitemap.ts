@@ -1,70 +1,26 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+import { getSiteUrl } from "@/lib/seo/site-url";
+
+type SitemapEntry = {
+  path: string;
+  changeFrequency: NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
+  priority: number;
+};
+
+const SITEMAP_ROUTES: SitemapEntry[] = [
+  { path: "", changeFrequency: "weekly", priority: 1 },
+  { path: "/apply-now", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/gallery", changeFrequency: "monthly", priority: 0.8 },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ftt1.com' // Replace with your actual domain
-  
-  const currentDate = new Date()
-  
-  return [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/apply-now`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/benefits`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/pay-growth`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/sign-on-bonus`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/requirements`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/why-ftt`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/owner-message`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/testimonials`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/gallery`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-  ]
+  const siteUrl = getSiteUrl();
+  const lastModified = new Date();
+
+  return SITEMAP_ROUTES.map((route) => ({
+    url: `${siteUrl}${route.path}`,
+    lastModified,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
+  }));
 }

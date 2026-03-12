@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./providers";
 import { fetchHomeData } from "@/lib/services/home.service";
+import { getSiteUrl } from "@/lib/seo/site-url";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,11 +36,21 @@ const sragen = localFont({
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await fetchHomeData();
+  const siteUrl = getSiteUrl();
+
   return {
+    metadataBase: new URL(siteUrl),
     title: data?.site_metadata?.name ?? "First Team Trucking",
     description: data?.site_metadata?.description ?? "First Team Trucking - Join Our Team",
+    manifest: "/site.webmanifest",
     icons: {
-      icon: data?.site_metadata?.favicon ?? "/favicon.ico",
+      icon: [
+        data?.site_metadata?.favicon ?? "/favicon.ico",
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      ],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+      shortcut: ["/favicon.ico"],
     },
   };
 }

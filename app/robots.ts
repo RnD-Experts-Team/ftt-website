@@ -1,14 +1,16 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+import { getSiteUrl } from "@/lib/seo/site-url";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://ftt1.com' // Replace with your actual domain
-  
+  const siteUrl = getSiteUrl();
+
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: [],
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/dashboard/", "/api/"],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
-  }
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
+  };
 }
