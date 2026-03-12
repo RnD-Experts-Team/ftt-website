@@ -15,3 +15,5 @@ export interface GallerySection {
 export interface GalleryData {
   gallery_section: GallerySection[];
 }
+
+// API response types
