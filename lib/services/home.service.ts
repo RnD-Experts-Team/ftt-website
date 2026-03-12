@@ -1,6 +1,6 @@
 import type { HomeData } from "./home.types";
 
-const CMS_BASE_URL = process.env.CMS_API_URL ?? "http://cms.1ftt.com/api";
+const CMS_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://cms.1ftt.com/api";
 
 export async function fetchHomeData(): Promise<HomeData | null> {
   try {

@@ -145,8 +145,12 @@ function EditGalleryItemForm() {
       if (imageFile) {
         payload.image = imageFile;
       } else if (currentImageUrl) {
-        // Re-fetch the existing image so the backend's required image field is satisfied
-        const response = await fetch(currentImageUrl);
+        // Re-fetch through a same-origin proxy to avoid browser CORS issues.
+        const proxyUrl = `/api/image-proxy?url=${encodeURIComponent(currentImageUrl)}`;
+        const response = await fetch(proxyUrl);
+        if (!response.ok) {
+          throw new Error("Could not load the existing image for update.");
+        }
         const blob = await response.blob();
         const filename = currentImageUrl.split('/').pop()?.split('?')[0] || 'image.jpg';
         payload.image = new File([blob], filename, { type: blob.type || 'image/jpeg' });

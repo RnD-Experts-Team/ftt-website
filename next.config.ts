@@ -3,6 +3,8 @@ const nextConfig = {
   // Required for Docker standalone deployment
   output: "standalone",
   images: {
+    // Allow Next image optimizer to fetch local dev CMS assets.
+    dangerouslyAllowLocalIP: true,
     remotePatterns: [
       // {
       //   protocol: "https",
@@ -12,6 +14,13 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "cms.1ftt.com",
+      },
+      // Allow local dev backend serving images on port 8000
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "8000",
+        pathname: "/storage/**",
       },
     ],
   },
