@@ -1,7 +1,7 @@
 import { HttpClient } from "@/lib/http/http-client";
 import { getAuthToken } from "@/lib/http/auth";
 
-const CMS_BASE_URL = process.env.NEXT_PUBLIC_CMS_API_URL ?? "http://cms.1ftt.com/api";
+const CMS_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://cms.1ftt.com/api";
 
 const httpClient = new HttpClient({
   baseUrl: CMS_BASE_URL,
