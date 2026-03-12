@@ -14,13 +14,22 @@ export type HttpClientOptions = {
   timeoutMs?: number;
 };
 
+const normalizeClientBaseUrl = (baseUrl: string): string => {
+  // In browsers, force API calls through same-origin Next routes to avoid CORS.
+  if (typeof window !== "undefined") {
+    return "/api";
+  }
+
+  return baseUrl;
+};
+
 export class HttpClient {
   private client: AxiosInstance;
 
   constructor(private opts: HttpClientOptions) {
     this.client = axios.create({
-      baseURL: opts.baseUrl,
-      timeout: opts.timeoutMs ?? 3000000,
+      baseURL: normalizeClientBaseUrl(opts.baseUrl),
+      timeout: opts.timeoutMs ?? 5000000,
       headers: {
         Accept: "application/json",
       },

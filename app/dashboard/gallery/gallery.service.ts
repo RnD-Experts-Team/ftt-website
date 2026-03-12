@@ -1,4 +1,4 @@
-import { HttpClient } from "@/lib/http/http-client";
+﻿import { HttpClient } from "@/lib/http/http-client";
 import { getAuthToken } from "@/lib/http/auth";
 import {
   GallerySectionListResponse,
@@ -12,12 +12,12 @@ import {
 } from "./gallery";
 
 const http = new HttpClient({
-  baseUrl: process.env.NEXT_PUBLIC_API_URL || "/api",
+  baseUrl: "/api",
   getToken: getAuthToken,
 });
 
 export const GalleryService = {
-  // ── Gallery Section ──────────────────────────────────────────────────────────────
+  // â”€â”€ Gallery Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   getGallerySections: (): Promise<GallerySectionListResponse> => {
     return http.get<GallerySectionListResponse>("/gallery-sections");
   },
@@ -32,7 +32,7 @@ export const GalleryService = {
     );
   },
 
-  // ── Gallery Items ───────────────────────────────────────────────────────────────
+  // â”€â”€ Gallery Items â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   getGalleryItems: (): Promise<GalleryItemListResponse> => {
     return http.get<GalleryItemListResponse>("/gallery-items/");
   },

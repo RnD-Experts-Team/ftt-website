@@ -135,7 +135,7 @@ export default function SettingsPage() {
           </CardHeader>
           <CardContent className="flex items-center gap-4">
             <Avatar className="h-20 w-20">
-              <AvatarImage src="/avatars/default.jpg" alt={name} />
+              <AvatarImage src="/FTT-Logo.png" alt={name} />
               <AvatarFallback className="text-lg">
                 {name.charAt(0).toUpperCase()}
               </AvatarFallback>
