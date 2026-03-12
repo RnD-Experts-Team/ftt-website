@@ -3,7 +3,7 @@ import { getAuthToken } from "@/lib/http/auth";
 import { CtaListResponse, CtaSingleResponse, CtaUpdatePayload } from "./cta";
 
 const http = new HttpClient({
-  baseUrl: process.env.NEXT_PUBLIC_API_URL || "/api",
+  baseUrl: "/api/cms",
   getToken: getAuthToken,
 });
 

@@ -3,7 +3,7 @@ import { getAuthToken } from "@/lib/http/auth";
 import { FounderSectionResponse, FounderSectionUpdateResponse, UpdateFounderPayload } from "./owner-message";
 import { normalizeFounderVideo } from "./utils";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
+const API_BASE_URL = "/api/cms";
 
 class OwnerMessageService {
   private client: HttpClient;

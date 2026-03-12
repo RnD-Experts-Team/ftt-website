@@ -10,7 +10,7 @@ import {
   UpdateTestimonialPayload,
 } from "./testimonials-sections";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
+const BASE_URL = "/api/cms";
 
 const httpClient = new HttpClient({
   baseUrl: BASE_URL,
