@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { HttpClient } from "@/lib/http/http-client";
 import { getAuthToken } from "@/lib/http/auth";
@@ -10,7 +10,7 @@ import {
   UpdateWhyUsItemPayload,
 } from "./whyftt";
 
-const BASE_URL = "/api/cms";
+const BASE_URL = "/api";
 
 const httpClient = new HttpClient({
   baseUrl: BASE_URL,

@@ -1,9 +1,9 @@
-import { HttpClient } from "@/lib/http/http-client";
+﻿import { HttpClient } from "@/lib/http/http-client";
 import { getAuthToken } from "@/lib/http/auth";
 import { HeroResponse, HeroUpdateResponse } from "./hero";
 
 const http = new HttpClient({
-  baseUrl: "/api/cms",
+  baseUrl: "/api",
   getToken: getAuthToken,
 });
 

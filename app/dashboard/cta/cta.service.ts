@@ -1,9 +1,9 @@
-import { HttpClient } from "@/lib/http/http-client";
+﻿import { HttpClient } from "@/lib/http/http-client";
 import { getAuthToken } from "@/lib/http/auth";
 import { CtaListResponse, CtaSingleResponse, CtaUpdatePayload } from "./cta";
 
 const http = new HttpClient({
-  baseUrl: "/api/cms",
+  baseUrl: "/api",
   getToken: getAuthToken,
 });
 

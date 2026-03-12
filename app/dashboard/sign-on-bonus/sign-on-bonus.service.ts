@@ -1,4 +1,4 @@
-import { HttpClient } from "@/lib/http/http-client";
+﻿import { HttpClient } from "@/lib/http/http-client";
 import { getAuthToken } from "@/lib/http/auth";
 import {
   OfferSectionListResponse,
@@ -12,12 +12,12 @@ import {
 } from "./sign-on-bonus";
 
 const http = new HttpClient({
-  baseUrl: "/api/cms",
+  baseUrl: "/api",
   getToken: getAuthToken,
 });
 
 export const signOnBonusService = {
-  // ── Offer Section ──────────────────────────────────────────────────────────
+  // â”€â”€ Offer Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   getOfferSections: (): Promise<OfferSectionListResponse> => {
     return http.get<OfferSectionListResponse>("/offer-sections/");
   },
@@ -44,7 +44,7 @@ export const signOnBonusService = {
     );
   },
 
-  // ── Offer Requirements ─────────────────────────────────────────────────────
+  // â”€â”€ Offer Requirements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   getOfferRequirements: (): Promise<OfferRequirementListResponse> => {
     return http.get<OfferRequirementListResponse>("/offer-requirements/");
   },

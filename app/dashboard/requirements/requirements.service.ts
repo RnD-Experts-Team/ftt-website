@@ -1,4 +1,4 @@
-import { HttpClient } from "@/lib/http/http-client";
+﻿import { HttpClient } from "@/lib/http/http-client";
 import { getAuthToken } from "@/lib/http/auth";
 import {
   NeedsSectionListResponse,
@@ -12,12 +12,12 @@ import {
 } from "./requirements";
 
 const http = new HttpClient({
-  baseUrl: "/api/cms",
+  baseUrl: "/api",
   getToken: getAuthToken,
 });
 
 export const RequirementsService = {
-  // ── Needs Section ─────────────────────────────────────────────────────────
+  // â”€â”€ Needs Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   getNeedsSections: (): Promise<NeedsSectionListResponse> => {
     return http.get<NeedsSectionListResponse>("/needs-sections");
   },
@@ -29,7 +29,7 @@ export const RequirementsService = {
     return http.post<NeedsSectionSingleResponse>(`/needs-sections/${id}`, payload);
   },
 
-  // ── Needs Items ───────────────────────────────────────────────────────────
+  // â”€â”€ Needs Items â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   getNeedsItems: (): Promise<NeedsItemListResponse> => {
     return http.get<NeedsItemListResponse>("/needs-items/");
   },

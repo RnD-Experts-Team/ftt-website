@@ -1,9 +1,9 @@
-import { HttpClient } from "@/lib/http/http-client";
+﻿import { HttpClient } from "@/lib/http/http-client";
 import { SiteMetadataResponse, SiteMetadataUpdateResponse } from "./site-metadata";
 import { getAuthToken } from "@/lib/http/auth";
 
 const http = new HttpClient({
-  baseUrl: "/api/cms",
+  baseUrl: "/api",
   getToken: getAuthToken,
 });
 export const SiteMetadataService = {

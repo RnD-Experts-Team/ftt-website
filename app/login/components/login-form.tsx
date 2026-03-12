@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -35,7 +35,7 @@ export function LoginForm({
   const [password, setPassword] = React.useState("");
 
   const client = new HttpClient({
-    baseUrl: process.env.NEXT_PUBLIC_API_URL ?? "/api",
+    baseUrl: "/api",
     getToken: () => null,
   });
 
@@ -73,10 +73,10 @@ export function LoginForm({
         throw new Error("Invalid login response");
       }
 
-      // ✅ Store everything via Zustand
+      // âœ… Store everything via Zustand
       login(token, user);
 
-      // ✅ Set cookie for middleware / SSR
+      // âœ… Set cookie for middleware / SSR
       document.cookie = `cms_token=${token}; path=/; max-age=${
         60 * 60 * 8
       }; samesite=lax`;

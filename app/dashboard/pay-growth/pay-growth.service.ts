@@ -1,4 +1,4 @@
-import { HttpClient } from "@/lib/http/http-client";
+﻿import { HttpClient } from "@/lib/http/http-client";
 import { getAuthToken } from "@/lib/http/auth";
 import {
   TemptationSectionListResponse,
@@ -11,12 +11,12 @@ import {
 } from "./pay-growth";
 
 const http = new HttpClient({
-  baseUrl: "/api/cms",
+  baseUrl: "/api",
   getToken: getAuthToken,
 });
 
 export const PayGrowthService = {
-  // ── Temptation Section ─────────────────────────────────────────────────────
+  // â”€â”€ Temptation Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   getTemptationSections: (): Promise<TemptationSectionListResponse> => {
     return http.get<TemptationSectionListResponse>("/temptation-sections/");
   },
@@ -43,7 +43,7 @@ export const PayGrowthService = {
     );
   },
 
-  // ── Temptation Requirements ────────────────────────────────────────────────
+  // â”€â”€ Temptation Requirements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   createTemptationRequirement: (
     payload: CreateTemptationRequirementPayload
   ): Promise<TemptationRequirementSingleResponse> => {
