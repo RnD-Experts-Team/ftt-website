@@ -1,4 +1,4 @@
-import { HttpClient } from "@/lib/http/http-client";
+﻿import { HttpClient } from "@/lib/http/http-client";
 import { getAuthToken } from "@/lib/http/auth";
 import {
   BenefitsSectionListResponse,
@@ -12,12 +12,12 @@ import {
 } from "./benefits";
 
 const http = new HttpClient({
-  baseUrl: process.env.NEXT_PUBLIC_API_URL || "/api",
+  baseUrl: "/api",
   getToken: getAuthToken,
 });
 
 export const BenefitsService = {
-  // ── Benefits Section ────────────────────────────────────────────────────────
+  // â”€â”€ Benefits Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   getBenefitsSections: (): Promise<BenefitsSectionListResponse> => {
     return http.get<BenefitsSectionListResponse>("/benefits-sections/");
   },
@@ -32,7 +32,7 @@ export const BenefitsService = {
     );
   },
 
-  // ── Benefits Items ──────────────────────────────────────────────────────────
+  // â”€â”€ Benefits Items â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   getBenefitsItems: (): Promise<BenefitsItemListResponse> => {
     return http.get<BenefitsItemListResponse>("/benefits-items/");
   },

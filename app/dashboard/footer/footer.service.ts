@@ -1,4 +1,4 @@
-import { HttpClient } from "@/lib/http/http-client";
+﻿import { HttpClient } from "@/lib/http/http-client";
 import { getAuthToken } from "@/lib/http/auth";
 import {
   FooterContactListResponse,
@@ -10,12 +10,12 @@ import {
 } from "./footer";
 
 const http = new HttpClient({
-  baseUrl: process.env.NEXT_PUBLIC_API_URL || "/api",
+  baseUrl: "/api",
   getToken: getAuthToken,
 });
 
 export const FooterService = {
-  // ── Footer Contact ──────────────────────────────────────────────────────────
+  // â”€â”€ Footer Contact â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   getFooterContacts: (): Promise<FooterContactListResponse> => {
     return http.get<FooterContactListResponse>("/footer-contacts");
   },
@@ -30,7 +30,7 @@ export const FooterService = {
     );
   },
 
-  // ── Footer Social Links ─────────────────────────────────────────────────────
+  // â”€â”€ Footer Social Links â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   getFooterSocialLinks: (): Promise<FooterSocialLinkListResponse> => {
     return http.get<FooterSocialLinkListResponse>("/footer-social-links/");
   },
