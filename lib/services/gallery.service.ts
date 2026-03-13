@@ -1,6 +1,6 @@
 import type { GallerySection } from "./gallery.types";
 
-const CMS_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://cms.1ftt.com/api";
+const CMS_BASE_URL = process.env.CMS_API_URL ?? "https://cms.1ftt.com/api";
 
 export async function fetchGalleryData(): Promise<GallerySection | null> {
   try {

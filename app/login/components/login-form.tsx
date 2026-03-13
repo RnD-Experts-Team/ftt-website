@@ -35,7 +35,7 @@ export function LoginForm({
   const [password, setPassword] = React.useState("");
 
   const client = new HttpClient({
-    baseUrl: process.env.NEXT_PUBLIC_API_URL ?? "/api",
+    baseUrl: "/api/cms",
     getToken: () => null,
   });
 
