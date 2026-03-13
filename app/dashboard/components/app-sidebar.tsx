@@ -128,7 +128,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:p-1.5!">
-              <a href="http://localhost:3000">
+              <a href="/">
                 <Image src="/FTT-Logo.png" alt="Ftt-CMS Logo" width={40} height={40} />
                 <span className="text-base font-semibold">Ftt-CMS</span>
               </a>
