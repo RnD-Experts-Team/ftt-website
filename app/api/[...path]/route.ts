@@ -46,35 +46,46 @@ function buildForwardHeaders(request: NextRequest): Headers {
 }
 
 async function proxyRequest(request: NextRequest, context: RouteContext): Promise<NextResponse> {
-  const { path } = await context.params;
-  const targetUrl = buildTargetUrl(path, request);
+  try {
+    const { path } = await context.params;
+    const targetUrl = buildTargetUrl(path, request);
 
-  const method = request.method.toUpperCase();
-  const hasBody = method !== "GET" && method !== "HEAD";
+    const method = request.method.toUpperCase();
+    const hasBody = method !== "GET" && method !== "HEAD";
+    const bodyBuffer = hasBody ? await request.arrayBuffer() : undefined;
 
-  const upstreamResponse = await fetch(targetUrl, {
-    method,
-    headers: buildForwardHeaders(request),
-    body: hasBody ? request.body : undefined,
-    redirect: "follow",
-    cache: "no-store",
-  });
+    const upstreamResponse = await fetch(targetUrl, {
+      method,
+      headers: buildForwardHeaders(request),
+      body: bodyBuffer,
+      redirect: "follow",
+      cache: "no-store",
+    });
 
-  const responseHeaders = new Headers();
+    const responseHeaders = new Headers();
 
-  // Copy only safe response headers.
-  ["content-type", "cache-control", "etag", "last-modified"].forEach((headerName) => {
-    const value = upstreamResponse.headers.get(headerName);
-    if (value) {
-      responseHeaders.set(headerName, value);
-    }
-  });
+    // Copy only safe response headers.
+    ["content-type", "cache-control", "etag", "last-modified"].forEach((headerName) => {
+      const value = upstreamResponse.headers.get(headerName);
+      if (value) {
+        responseHeaders.set(headerName, value);
+      }
+    });
 
-  return new NextResponse(upstreamResponse.body, {
-    status: upstreamResponse.status,
-    statusText: upstreamResponse.statusText,
-    headers: responseHeaders,
-  });
+    return new NextResponse(upstreamResponse.body, {
+      status: upstreamResponse.status,
+      statusText: upstreamResponse.statusText,
+      headers: responseHeaders,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: "Failed to reach upstream CMS API.",
+        error: error instanceof Error ? error.message : "Unknown proxy error",
+      },
+      { status: 502 }
+    );
+  }
 }
 
 export const dynamic = "force-dynamic";
